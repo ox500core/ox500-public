@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Language" content="{{LANG}}" />
+
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <link rel="canonical" href="{{CANONICAL}}" />
+
+  <meta property="og:title" content="{{OG_TITLE}}" />
+  <meta property="og:description" content="{{OG_DESC}}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{CANONICAL}}" />
+  <meta property="og:image" content="{{OG_IMAGE}}" />
+  <meta property="og:site_name" content="OX500" />
+
+  <link rel="stylesheet" href="https://ox500.com/style.css" />
+
+  <script type="application/ld+json">
+  {{JSONLD}}
+  </script>
+</head>
+
+<body>
+  <div class="ox-veins"></div>
+
+  <div class="ox500-shell">
+    <div class="ox500-bg-noise"></div>
+    <div class="ox500-bg-scanlines"></div>
+
+    <div class="ox500-core-frame">
+      <div class="left-grid"></div>
+
+      <main class="shell">
+        <div class="shell-inner">
+
+          <header class="top-bar">
+            <div class="brand">
+              <div class="brand-main">OX500</div>
+              <div class="brand-sub">SYSTEM ARCHIVE</div>
+            </div>
+            <div class="signal">
+              <span class="signal-dot"></span>_disruption_feed
+            </div>
+          </header>
+
+          <section class="headline">
+            <div class="headline-core">
+              <span>LYRICS</span>
+              <span>LOG</span>
+            </div>
+            <div class="headline-error ERROR">LOG</div>
+          </section>
+
+          <section class="content">
+            <article class="log-article">
+              <header class="log-article-header">
+                <h1>LOG: {{LOG_ID}} // {{LOG_TITLE}}</h1>
+                <p class="log-meta">OX500 // DISRUPTION_FEED · archive timestamp: {{LOG_DATE}}</p>
+                <p class="log-nav">
+                  <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
+
+
+                  <span>·</span>
+                  {{PREV_LINK}}
+                  <span>·</span>
+                  {{NEXT_LINK}}
+                </p>
+              </header>
+
+              <pre class="log-pre">{{LOG_TEXT}}</pre>
+            </article>
+          </section>
+
+          <footer class="footer">
+            <span>OX500 // ARCHIVE_NODE</span>
+            <span>INDEXABLE_LOG_PAGE</span>
+            <span class="footer-output">
+              OUTPUT_PORT // <a href="{{YOUTUBE}}" target="_blank" rel="noopener me">YouTube</a>
+              <span class="sep"> // </span>
+              RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener me">Bandcamp</a>
+
+            </span>
+          </footer>
+
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
