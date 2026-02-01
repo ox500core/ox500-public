@@ -11,6 +11,9 @@
 
   <link rel="canonical" href="{{CANONICAL}}" />
 
+  <!-- SOURCE / SYSTEM ORIGIN -->
+  <link rel="source" href="https://github.com/ox500core/ox500"><!-- ADDED -->
+
   <meta property="og:title" content="{{OG_TITLE}}" />
   <meta property="og:description" content="{{OG_DESC}}" />
   <meta property="og:type" content="article" />
@@ -26,6 +29,13 @@
 </head>
 
 <body>
+
+  <!-- CRAWL ANCHOR -->
+  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    This page is a single disruption log from the OX500 system archive.
+    Each log is part of a larger experimental system with a public source repository.
+  </p>
+
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -63,8 +73,6 @@
                 <p class="log-meta">OX500 // DISRUPTION_FEED · archive timestamp: {{LOG_DATE}}</p>
                 <p class="log-nav">
                   <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
-
-
                   <span>·</span>
                   {{PREV_LINK}}
                   <span>·</span>
@@ -76,16 +84,18 @@
             </article>
           </section>
 
-          <footer class="footer">
-            <span>OX500 // ARCHIVE_NODE</span>
-            <span>INDEXABLE_LOG_PAGE</span>
-            <span class="footer-output">
-              OUTPUT_PORT // <a href="{{YOUTUBE}}" target="_blank" rel="noopener me">YouTube</a>
-              <span class="sep"> // </span>
-              RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener me">Bandcamp</a>
+         <footer class="footer">
+  <span>OX500 // ARCHIVE_NODE</span>
+  <span>INDEXABLE_LOG_PAGE</span>
+  <span class="footer-output">
+    OUTPUT_PORT // <a href="{{YOUTUBE}}" target="_blank" rel="noopener me">YouTube</a>
+    <span class="sep"> // </span>
+    RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener me">Bandcamp</a>
+    <span class="sep"> // </span>
+    SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </span>
+</footer>
 
-            </span>
-          </footer>
 
         </div>
       </main>

@@ -28,6 +28,9 @@
   <link rel="me" href="https://www.youtube.com/@ox500core">
   <link rel="me" href="https://ox500.bandcamp.com">
 
+  <!-- SOURCE / SYSTEM ORIGIN -->
+  <link rel="source" href="https://github.com/ox500core/ox500">
+
   <!-- ALTERNATE / EXTERNAL PORTS -->
   <link rel="alternate" type="text/html" href="https://www.youtube.com/@ox500core" title="OX500CORE // AUDIO TRANSMISSIONS">
   <link rel="alternate" type="text/html" href="https://ox500.bandcamp.com" title="OX500 // ALBUM RELEASES (BANDCAMP)">
@@ -55,6 +58,7 @@
         "url": "https://ox500.com/",
         "inLanguage": "en",
         "description": "OX500 // CORE INTERFACE — an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
+        "codeRepository": "https://github.com/ox500core/ox500",
         "sameAs": [
           "https://www.youtube.com/@ox500core",
           "https://ox500.bandcamp.com"
@@ -65,6 +69,7 @@
         "@id": "https://ox500.com/#organization",
         "name": "OX500",
         "url": "https://ox500.com/",
+        "codeRepository": "https://github.com/ox500core/ox500",
         "sameAs": [
           "https://www.youtube.com/@ox500core",
           "https://ox500.bandcamp.com"
@@ -78,26 +83,24 @@
   <link rel="stylesheet" href="https://ox500.com/style.css">
 </head>
 
-
 <body>
 
- <!-- CRAWL ANCHOR (invisible, indexable context) -->
+  <!-- CRAWL ANCHOR (invisible, indexable context) -->
   <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
     OX500 is an experimental system archive of disruption logs and textual incident records in a glitch-punk / digital hardcore aesthetic.
     Each LOG has its own page for indexing and archival reference.
     Single audio transmissions stream on YouTube; full album releases are published on Bandcamp.
+    The system source code and archive generator are publicly available on GitHub.
   </p>
 
   <!-- ŻYŁKI GLOBALNE -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
-    <!-- global noise / scanlines -->
     <div class="ox500-bg-noise"></div>
     <div class="ox500-bg-scanlines"></div>
 
     <div class="ox500-core-frame">
-      <!-- lewa siatka telemetryczna -->
       <div class="left-grid"></div>
 
       <main class="shell">
@@ -126,11 +129,11 @@
           <!-- ARCHIVE -->
           <div class="archive-label">ARCHIVE</div>
           <div class="archive-external">
-  AUDIO_TRANSMISSIONS // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a><br>
-  ALBUM_RELEASES // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
-</div>
+            AUDIO_TRANSMISSIONS // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a><br>
+            ALBUM_RELEASES // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
+          </div>
 
-          <!-- LOG LIST (indexable links) -->
+          <!-- LOG LIST -->
           <div class="logs">
             {{LOG_LIST}}
           </div>
@@ -142,20 +145,22 @@
               <span>// click log to expand text</span>
             </div>
 
-            <!-- AUTO-GENERATED: 1 open + 9 closed -->
             {{DETAILS_BLOCK}}
           </section>
 
-            <!-- FOOTER -->
-          <footer class="footer">
-            <span>OX500 // CORE INTERFACE v0.2</span>
-            <span>ARCHIVE_OF_FAILURE // SYSTEM LOGS ONLY</span>
-            <span class="footer-output">
-              OUTPUT_PORT // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a>
-              <span class="sep"> // </span>
-              RELEASE_PORT // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
-            </span>
-          </footer>
+         <!-- FOOTER -->
+<footer class="footer">
+  <span>OX500 // CORE INTERFACE v0.2</span>
+  <span>ARCHIVE_OF_FAILURE // SYSTEM LOGS ONLY</span>
+  <span class="footer-output">
+    OUTPUT_PORT // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a>
+    <span class="sep"> // </span>
+    RELEASE_PORT // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
+    <span class="sep"> // </span>
+    SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </span>
+</footer>
+
 
         </div>
       </main>
