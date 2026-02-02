@@ -88,12 +88,13 @@
   <!-- CRAWL ANCHOR (invisible, indexable context) -->
   <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
     OX500 is an experimental system archive of disruption logs and textual incident records in a glitch-punk / digital hardcore aesthetic.
-    Each LOG has its own page for indexing and archival reference.
+    The interface exposes the latest disruption nodes first.
+    Each node groups multiple LOG pages for indexing and archival reference.
     Single audio transmissions stream on YouTube; full album releases are published on Bandcamp.
     The system source code and archive generator are publicly available on GitHub.
   </p>
 
-  <!-- ŻYŁKI GLOBALNE -->
+  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -123,44 +124,38 @@
               <span>CORE</span>
               <span>INTERFACE</span>
             </div>
-            <div class="headline-error ERROR">ERROR</div>
+            <div class="headline-error ERROR" data-glitch="ERROR">ERROR</div>
           </section>
 
-          <!-- ARCHIVE -->
+          <!-- ARCHIVE PORTS -->
           <div class="archive-label">ARCHIVE</div>
           <div class="archive-external">
             AUDIO_TRANSMISSIONS // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a><br>
             ALBUM_RELEASES // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
           </div>
 
-          <!-- LOG LIST -->
-          <div class="logs">
-            {{LOG_LIST}}
-          </div>
-
-          <!-- CONTENT -->
+          <!-- LATEST DISRUPTIONS -->
           <section class="content">
             <div class="content-head">
-              <span>LYRICS_LOG</span>
-              <span>// click log to expand text</span>
+              <span>DISRUPTION_FEED</span>
+              <span>// open node → see all logs</span>
             </div>
 
-            {{DETAILS_BLOCK}}
+            {{DISRUPTION_BLOCKS}}
           </section>
 
-         <!-- FOOTER -->
-<footer class="footer">
-  <span>OX500 // CORE INTERFACE v0.2</span>
-  <span>ARCHIVE_OF_FAILURE // SYSTEM LOGS ONLY</span>
-  <span class="footer-output">
-    OUTPUT_PORT // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a>
-    <span class="sep"> // </span>
-    RELEASE_PORT // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
-    <span class="sep"> // </span>
-    SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </span>
-</footer>
-
+          <!-- FOOTER -->
+          <footer class="footer">
+            <span>OX500 // CORE INTERFACE v0.3</span>
+            <span>ARCHIVE_OF_FAILURE // NODES</span>
+            <span class="footer-output">
+              OUTPUT_PORT // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a>
+              <span class="sep"> // </span>
+              RELEASE_PORT // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
+              <span class="sep"> // </span>
+              SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </span>
+          </footer>
 
         </div>
       </main>

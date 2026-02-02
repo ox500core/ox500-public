@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Language" content="{{LANG}}" />
+
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="theme-color" content="#050608" />
+
+  <link rel="canonical" href="{{CANONICAL}}" />
+
+  <!-- SOURCE / SYSTEM ORIGIN -->
+  <link rel="source" href="https://github.com/ox500core/ox500" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="{{OG_TITLE}}" />
+  <meta property="og:description" content="{{OG_DESC}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{CANONICAL}}" />
+  <meta property="og:image" content="{{OG_IMAGE}}" />
+  <meta property="og:site_name" content="OX500" />
+
+  <!-- FAVICON -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- STYLES -->
+  <link rel="preconnect" href="https://ox500.com" crossorigin />
+  <link rel="stylesheet" href="https://ox500.com/style.css" />
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {{JSONLD}}
+  </script>
+</head>
+
+<body>
+
+  <!-- CRAWL ANCHOR -->
+  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
+    This page is a disruption node from the OX500 system archive.
+    It groups multiple indexed logs under a single node title.
+  </p>
+
+  <div class="ox-veins"></div>
+
+  <div class="ox500-shell">
+    <div class="ox500-bg-noise"></div>
+    <div class="ox500-bg-scanlines"></div>
+
+    <div class="ox500-core-frame">
+      <div class="left-grid"></div>
+
+      <main class="shell">
+        <div class="shell-inner">
+
+          <header class="top-bar">
+            <div class="brand">
+              <div class="brand-main">OX500</div>
+              <div class="brand-sub">DISRUPTION NODE</div>
+            </div>
+            <div class="signal">
+              <span class="signal-dot"></span>_disruption_node
+            </div>
+          </header>
+
+          <section class="headline">
+            <div class="headline-core">
+              <span>DISRUPTION</span>
+              <span>NODE</span>
+            </div>
+            <div class="headline-error ERROR" data-glitch="NODE">NODE</div>
+          </section>
+
+          <section class="content">
+
+            <div class="content-head">
+              <span>DISRUPTION // {{SERIES_NAME}} [{{SERIES_COUNT}}]</span>
+              <span>// grouped logs</span>
+            </div>
+
+            <p class="log-nav" style="margin-top:2px;">
+              <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
+              <span>·</span>
+              <a class="nav-next" href="{{YOUTUBE}}" target="_blank" rel="noopener noreferrer me">YouTube</a>
+              <span>·</span>
+              <a class="nav-next" href="{{BANDCAMP}}" target="_blank" rel="noopener noreferrer me">Bandcamp</a>
+            </p>
+
+            <div class="logs" style="margin-top:8px;">
+              {{SERIES_LOG_LIST}}
+            </div>
+
+          </section>
+
+          <footer class="footer">
+            <span>OX500 // DISRUPTION_NODE</span>
+            <span>INDEXABLE_GROUP_PAGE</span>
+            <span class="footer-output">
+              OUTPUT_PORT // <a href="{{YOUTUBE}}" target="_blank" rel="noopener noreferrer me">YouTube</a>
+              <span class="sep"> // </span>
+              RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener noreferrer me">Bandcamp</a>
+              <span class="sep"> // </span>
+              SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </span>
+          </footer>
+
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
