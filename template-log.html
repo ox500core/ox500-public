@@ -35,13 +35,10 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div id="ox500-bg" aria-hidden="true"></div>
 
-  <!-- CRAWL ANCHOR -->
-  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-    This page is a single disruption log from the OX500 system archive.
-    Each log is part of a larger experimental system with a public source repository.
-  </p>
-
+  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -51,7 +48,7 @@
     <div class="ox500-core-frame">
       <div class="left-grid"></div>
 
-      <main class="shell">
+      <main id="content" class="shell">
         <div class="shell-inner">
 
           <header class="top-bar">
@@ -81,13 +78,9 @@
                   OX500 // DISRUPTION · {{NODE_META}}archive timestamp: {{LOG_DATE}}
                 </p>
 
-                <p class="log-nav">
-                  <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
-                  <span>·</span>
-                  {{PREV_LINK}}
-                  <span>·</span>
-                  {{NEXT_LINK}}
-                </p>
+                <nav aria-label="Log navigation" class="log-nav">
+                  {{FULL_NAV}}
+                </nav>
               </header>
 
               <pre class="log-pre">{{LOG_TEXT}}</pre>

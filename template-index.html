@@ -9,10 +9,11 @@
   <meta http-equiv="Content-Language" content="en">
 
   <!-- CORE SEO -->
-  <meta name="description" content="OX500 // CORE INTERFACE – system archive of failures and disruption logs. Textual incident records linked to audio transmissions and album releases.">
-  <meta name="keywords" content="OX500, system archive, system failure, disruption logs, archive of failure, disruption feed, system logs, experimental sound, noise, distorted vocals, incident log, audio transmissions, bandcamp album, youtube audio">
+  <meta name="description" content="OX500 System Archive — experimental disruption logs exploring AI compliance, system failure, and digital consciousness. Linked to audio transmissions on YouTube and album releases on Bandcamp.">
+  <meta name="keywords" content="OX500, experimental poetry, AI compliance, system failure, disruption logs, glitch aesthetics, digital art, noise music, bandcamp, youtube">
   <meta name="author" content="OX500">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#050608">
 
   <!-- GOOGLE -->
   <meta name="googlebot" content="index, follow">
@@ -48,32 +49,76 @@
 
   <!-- STRUCTURED DATA / JSON-LD -->
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://ox500.com/#website",
+      "name": "OX500",
+      "alternateName": "OX500 System Archive",
+      "url": "https://ox500.com/",
+      "inLanguage": "en",
+      "description": "OX500 // CORE INTERFACE — an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
+      "keywords": "AI poetry, experimental sound, system failure, disruption logs, glitch aesthetics",
+      "genre": [
+        "Experimental Music",
+        "Digital Poetry",
+        "System Art"
+      ],
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Artificial intelligence compliance"
+        },
+        {
+          "@type": "Thing",
+          "name": "System failure"
+        },
+        {
+          "@type": "Thing",
+          "name": "Digital consciousness"
+        }
+      ],
+      "codeRepository": "https://github.com/ox500core/ox500",
+      "sameAs": [
+        "https://www.youtube.com/@ox500core",
+        "https://ox500.bandcamp.com",
+        "https://github.com/ox500core/ox500"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://ox500.com/#organization",
+      "name": "OX500",
+      "url": "https://ox500.com/",
+      "codeRepository": "https://github.com/ox500core/ox500",
+      "sameAs": [
+        "https://www.youtube.com/@ox500core",
+        "https://ox500.bandcamp.com",
+        "https://github.com/ox500core/ox500"
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- DISRUPTION FEED (SERIES) SCHEMA -->
+  <script type="application/ld+json">
+  {{DISRUPTION_SERIES_JSONLD}}
+  </script>
+
+  <!-- BREADCRUMBS -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {
-        "@type": "WebSite",
-        "@id": "https://ox500.com/#website",
-        "name": "OX500",
-        "url": "https://ox500.com/",
-        "inLanguage": "en",
-        "description": "OX500 // CORE INTERFACE — an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
-        "codeRepository": "https://github.com/ox500core/ox500",
-        "sameAs": [
-          "https://www.youtube.com/@ox500core",
-          "https://ox500.bandcamp.com"
-        ]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://ox500.com/#organization",
-        "name": "OX500",
-        "url": "https://ox500.com/",
-        "codeRepository": "https://github.com/ox500core/ox500",
-        "sameAs": [
-          "https://www.youtube.com/@ox500core",
-          "https://ox500.bandcamp.com"
-        ]
+        "@type": "ListItem",
+        "position": 1,
+        "name": "OX500 Core Interface",
+        "item": "https://ox500.com/"
       }
     ]
   }
@@ -83,16 +128,9 @@
   <link rel="stylesheet" href="https://ox500.com/style.css">
 </head>
 
-<body>
-
-  <!-- CRAWL ANCHOR (invisible, indexable context) -->
-  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-    OX500 is an experimental system archive of disruption logs and textual incident records in a glitch-punk / digital hardcore aesthetic.
-    The interface exposes the latest disruption nodes first.
-    Each node groups multiple LOG pages for indexing and archival reference.
-    Single audio transmissions stream on YouTube; full album releases are published on Bandcamp.
-    The system source code and archive generator are publicly available on GitHub.
-  </p>
+<body class="page-core">
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div id="ox500-bg" aria-hidden="true"></div>
 
   <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
@@ -104,7 +142,7 @@
     <div class="ox500-core-frame">
       <div class="left-grid"></div>
 
-      <main class="shell">
+      <main id="content" class="shell">
         <div class="shell-inner">
 
           <!-- TOP BAR -->
@@ -120,26 +158,26 @@
 
           <!-- HEADLINE -->
           <section class="headline">
-            <div class="headline-core">
+            <h1 class="headline-core">
               <span>CORE</span>
               <span>INTERFACE</span>
-            </div>
+            </h1>
             <div class="headline-error ERROR" data-glitch="ERROR">ERROR</div>
           </section>
 
           <!-- ARCHIVE PORTS -->
           <div class="archive-label">ARCHIVE</div>
-          <div class="archive-external">
+          <nav aria-label="External archive ports" class="archive-external">
             AUDIO_TRANSMISSIONS // <a href="https://www.youtube.com/@ox500core" target="_blank" rel="noopener me">YouTube</a><br>
             ALBUM_RELEASES // <a href="https://ox500.bandcamp.com" target="_blank" rel="noopener me">Bandcamp</a>
-          </div>
+          </nav>
 
           <!-- LATEST DISRUPTIONS -->
           <section class="content">
-            <div class="content-head">
+            <h2 class="content-head">
               <span>DISRUPTION_FEED</span>
               <span>// open node → see all logs</span>
-            </div>
+            </h2>
 
             {{DISRUPTION_BLOCKS}}
           </section>

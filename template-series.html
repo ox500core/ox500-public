@@ -37,13 +37,10 @@
 </head>
 
 <body>
-
-  <!-- CRAWL ANCHOR -->
-  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-    This page is a disruption node from the OX500 system archive.
-    It groups multiple indexed logs under a single node title.
-  </p>
-
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div id="ox500-bg" aria-hidden="true"></div>
+  
+  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -53,7 +50,7 @@
     <div class="ox500-core-frame">
       <div class="left-grid"></div>
 
-      <main class="shell">
+      <main id="content" class="shell">
         <div class="shell-inner">
 
           <header class="top-bar">
@@ -75,24 +72,22 @@
           </section>
 
           <section class="content">
+            <article class="log-article">
+              <header class="log-article-header">
+                <h1>{{H1}}</h1>
 
-            <div class="content-head">
-              <span>DISRUPTION // {{SERIES_NAME}} [{{SERIES_COUNT}}]</span>
-              <span>// grouped logs</span>
-            </div>
+                <p class="log-meta">// grouped logs</p>
+                <p class="log-meta">{{META}}</p>
 
-            <p class="log-nav" style="margin-top:2px;">
-              <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
-              <span>·</span>
-              <a class="nav-next" href="{{YOUTUBE}}" target="_blank" rel="noopener noreferrer me">YouTube</a>
-              <span>·</span>
-              <a class="nav-next" href="{{BANDCAMP}}" target="_blank" rel="noopener noreferrer me">Bandcamp</a>
-            </p>
+                <nav aria-label="Site navigation" class="log-nav">
+                  <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
+                </nav>
+              </header>
 
-            <div class="logs" style="margin-top:8px;">
-              {{SERIES_LOG_LIST}}
-            </div>
-
+              <div class="logs">
+                {{NODE_LOG_LIST}}
+              </div>
+            </article>
           </section>
 
           <footer class="footer">

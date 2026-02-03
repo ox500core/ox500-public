@@ -15,7 +15,7 @@ HOME_DISRUPTION_PREVIEW_LOGS = 6
 
 def slugify(s: str) -> str:
     s = (s or "").lower().strip()
-    s = re.sub(r"[’']", "", s)
+    s = re.sub(r"['']", "", s)
     s = re.sub(r"[^a-z0-9]+", "-", s)
     s = re.sub(r"-{2,}", "-", s).strip("-")
     return s or "node"
@@ -60,9 +60,9 @@ def ym_from_date(date_str: str):
 def disruption_display_name(raw: str) -> str:
     """
     Zamienia np:
-      'DISRUPTION_SERIES // I’M NOT DONE' -> 'I’M NOT DONE'
+      'DISRUPTION_SERIES // I'M NOT DONE' -> 'I'M NOT DONE'
       'DISRUPTION // WRITE AI TO CONTINUE' -> 'WRITE AI TO CONTINUE'
-      'I’M NOT DONE' -> 'I’M NOT DONE'
+      'I'M NOT DONE' -> 'I'M NOT DONE'
     """
     s = (raw or "").strip()
     if not s:
@@ -182,6 +182,18 @@ def build():
     for l in logs:
         l["slug"] = slugify(l.get("slug") or l.get("title", ""))
 
+    # ===== FILTER OUT FUTURE-DATED LOGS (do not generate/publish yet) =====
+    today = datetime.now().date()
+    filtered = []
+    for l in logs:
+        try:
+            d = datetime.fromisoformat((l.get("date") or "").strip()).date()
+        except Exception:
+            d = today
+        if d <= today:
+            filtered.append(l)
+    logs = filtered
+
     # newest first
     logs_sorted = sorted(logs, key=lambda x: int(x["id"]), reverse=True)
 
@@ -191,6 +203,11 @@ def build():
     # Optional template for disruption node pages
     t_node_path = ROOT / "template-disruption.html"
     t_node = read_text(t_node_path) if t_node_path.exists() else None
+
+    # Optional template-series fallback for disruption node pages
+    t_series_path = ROOT / "template-series.html"
+    if t_node is None and t_series_path.exists():
+        t_node = read_text(t_series_path)
 
     # ===== COPY CSS =====
     css_src = ROOT / "style.css"
@@ -242,60 +259,68 @@ def build():
         rel_path = make_rel_path(log)
         url_path = make_url_path(rel_path)
         canonical = f"{base_url}{url_path}"
-        page_title = f'LOG {log["id"]} // {log["title"]} — OX500'
 
-        prev_link = ""
-        next_link = ""
+        # PREV / NEXT
+        # logs_sorted is newest first, so:
+        # i-1 = newer log = NEXT
+        # i+1 = older log = PREV
+        next_log = logs_sorted[i - 1] if i - 1 >= 0 else None
+        prev_log = logs_sorted[i + 1] if i + 1 < len(logs_sorted) else None
 
-        if i < len(logs_sorted) - 1:
-            prev_log = logs_sorted[i + 1]
-            prev_rel = make_rel_path(prev_log)
-            prev_title_attr = html.escape(f'LOG {prev_log["id"]} // {prev_log["title"]}')
-            prev_link_text = html.escape(nav_text("PREV", prev_log))
-            prev_link = (
-                f'<a class="nav-prev" href="{make_url_path(prev_rel)}" '
-                f'rel="prev" title="{prev_title_attr}">{prev_link_text}</a>'
+        # Build navigation parts
+        nav_parts = ['<a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>']
+        
+        if prev_log:
+            nav_parts.append(
+                f'<span>·</span>\n                  '
+                f'<a class="nav-prev" href="{make_url_path(make_rel_path(prev_log))}" '
+                f'rel="prev" title="LOG {prev_log["id"]} // {html.escape(prev_log.get("title",""))}">'
+                f'{nav_text("PREV", prev_log)}</a>'
             )
-
-        if i > 0:
-            next_log = logs_sorted[i - 1]
-            next_rel = make_rel_path(next_log)
-            next_title_attr = html.escape(f'LOG {next_log["id"]} // {next_log["title"]}')
-            next_link_text = html.escape(nav_text("NEXT", next_log))
-            next_link = (
-                f'<a class="nav-next" href="{make_url_path(next_rel)}" '
-                f'rel="next" title="{next_title_attr}">{next_link_text}</a>'
+        
+        if next_log:
+            nav_parts.append(
+                f'<span>·</span>\n                  '
+                f'<a class="nav-next" href="{make_url_path(make_rel_path(next_log))}" '
+                f'rel="next" title="LOG {next_log["id"]} // {html.escape(next_log.get("title",""))}">'
+                f'{nav_text("NEXT", next_log)}</a>'
             )
+        
+        full_nav = '\n                  '.join(nav_parts)
 
-        # disruption info
-        raw = (log.get("series") or log.get("disruption") or "").strip()
-        d_name = disruption_display_name(raw) if raw else None
-        d_slug = disruption_slug(raw) if raw else None
-        d_path = make_url_path(make_disruption_rel_path(d_slug)) if d_name and d_slug else None
-        d_url = f"{base_url}{d_path}" if d_path else None
-
-        # ✅ NODE_META: gotowy, klikalny fragment do template (żeby nie było {{...}} na stronie)
+        # DISRUPTION LINK
+        raw_disruption = (log.get("series") or log.get("disruption") or "").strip()
         node_meta = ""
-        if d_name and d_path:
+        d_name = None
+        d_url = None
+
+        if raw_disruption:
+            d_name = disruption_display_name(raw_disruption)
+            d_slug = disruption_slug(raw_disruption)
+            d_rel = make_disruption_rel_path(d_slug)
+            d_path = make_url_path(d_rel)
+            d_url = f"{base_url}{d_path}"
             node_meta = f'NODE: <a href="{d_path}" rel="up">{html.escape(d_name)}</a> · '
+
+        page_title = f"LOG {log['id']} // {log['title']} — OX500"
+        description = f"{log.get('title', '')} — {log.get('excerpt', '')[:150]}"
+        og_desc = f"{log.get('excerpt', '')[:200]}"
 
         page = render(
             t_log,
             {
                 "LANG": lang,
                 "PAGE_TITLE": html.escape(page_title),
-                "DESCRIPTION": html.escape(
-                    f'LOG {log["id"]} // {log["title"]} — OX500 disruption lyrics log.'
-                ),
+                "DESCRIPTION": html.escape(description),
                 "CANONICAL": canonical,
                 "OG_TITLE": html.escape(page_title),
-                "OG_DESC": html.escape(log.get("excerpt", "")),
+                "OG_DESC": html.escape(og_desc),
                 "OG_IMAGE": og_image,
                 "JSONLD": jsonld_article(
                     base_url,
                     url_path,
-                    f'LOG {log["id"]} // {log["title"]}',
-                    log.get("date", datetime.utcnow().date().isoformat()),
+                    f"LOG {log['id']} // {log['title']}",
+                    log.get("date", ""),
                     og_image,
                     github_repo,
                     disruption_name=d_name,
@@ -305,9 +330,8 @@ def build():
                 "LOG_TITLE": html.escape(log["title"]),
                 "LOG_DATE": html.escape(log.get("date", "")),
                 "LOG_TEXT": html.escape(log.get("text", "").rstrip()) + "\n",
-                "NODE_META": node_meta,          # ✅ to użyjesz w template-log.html jako {{NODE_META}}
-                "PREV_LINK": prev_link,
-                "NEXT_LINK": next_link,
+                "NODE_META": node_meta,
+                "FULL_NAV": full_nav,
                 "YOUTUBE": youtube,
                 "BANDCAMP": bandcamp,
             },
@@ -370,11 +394,8 @@ def build():
 </head>
 
 <body>
-  <p style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-    This page is a disruption node from the OX500 archive.
-    It groups multiple LOG pages under a single disruption title.
-  </p>
-
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div id="ox500-bg" aria-hidden="true"></div>
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -384,7 +405,7 @@ def build():
     <div class="ox500-core-frame">
       <div class="left-grid"></div>
 
-      <main class="shell">
+      <main id="content" class="shell">
         <div class="shell-inner">
 
           <header class="top-bar">
@@ -398,17 +419,17 @@ def build():
           </header>
 
           <section class="headline">
-            <div class="headline-core">
+            <h1 class="headline-core">
               <span>DISRUPTION</span>
               <span>NODE</span>
-            </div>
+            </h1>
             <div class="headline-error ERROR" data-glitch="NODE">NODE</div>
           </section>
 
           <section class="content">
             <article class="log-article">
               <header class="log-article-header">
-                <h1>{{H1}}</h1>
+                <h2>{{H1}}</h2>
                 <p class="log-meta">{{META}}</p>
                 <p class="log-nav">
                   <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
@@ -462,8 +483,8 @@ def build():
                     og_image,
                     github_repo,
                 ),
-                "H1": html.escape(f"DISRUPTION // {d_name}"),
-                "META": html.escape(f"OX500 // DISRUPTION_FEED · node · logs: {count}"),
+                "H1": html.escape(f"DISRUPTION // {d_name} [{count}]"),
+                "META": html.escape(f"OX500 // DISRUPTION_FEED · NODE · LOGS: {count}"),
                 "NODE_LOG_LIST": "\n".join(node_list),
                 "YOUTUBE": youtube,
                 "BANDCAMP": bandcamp,
@@ -513,11 +534,44 @@ def build():
 </details>'''
         )
 
-    # IMPORTANT: template-index musi mieć {{DISRUPTION_BLOCKS}}
+    # ===== GENERATE DISRUPTION SERIES JSON-LD FOR HOMEPAGE =====
+    disruption_series_parts = []
+    for d_slug in disruption_order[:HOME_DISRUPTION_LIMIT]:
+        d = disruptions[d_slug]
+        d_name = d["name"]
+        d_logs = d["logs"]
+        newest_date = d_logs[0].get("date", datetime.utcnow().date().isoformat())
+        node_url = make_url_path(make_disruption_rel_path(d_slug))
+        
+        disruption_series_parts.append({
+            "@type": "CreativeWork",
+            "name": f"DISRUPTION // {d_name}",
+            "url": f"{base_url}{node_url}",
+            "datePublished": normalize_date(newest_date)
+        })
+
+    disruption_series_jsonld = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWorkSeries",
+        "@id": f"{base_url}/#disruption-feed",
+        "name": "OX500 Disruption Feed",
+        "description": "Experimental poetry logs exploring AI compliance, decay, and system failure — linked to audio transmissions and album releases.",
+        "inLanguage": lang,
+        "url": f"{base_url}/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "OX500",
+            "url": f"{base_url}/"
+        },
+        "hasPart": disruption_series_parts
+    }
+
+    # IMPORTANT: template-index musi mieć {{DISRUPTION_BLOCKS}} i {{DISRUPTION_SERIES_JSONLD}}
     index_html = render(
         t_index,
         {
             "DISRUPTION_BLOCKS": "\n\n".join(blocks),
+            "DISRUPTION_SERIES_JSONLD": json.dumps(disruption_series_jsonld, ensure_ascii=False, indent=2),
         },
     )
     write_text(DIST / "index.html", index_html)
