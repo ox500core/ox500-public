@@ -1,7 +1,7 @@
 import json
 import re
 import shutil
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import html
 
@@ -81,14 +81,14 @@ def normalize_date(date_str: str) -> str:
         d = datetime.fromisoformat(s)
         return d.date().isoformat()
     except Exception:
-        return datetime.utcnow().date().isoformat()
+        return datetime.now(timezone.utc).date().isoformat()
 
 
 def ym_from_date(date_str: str):
     try:
         d = datetime.fromisoformat((date_str or "").strip())
     except Exception:
-        d = datetime.utcnow()
+        d = datetime.now(timezone.utc)
     return f"{d.year:04d}", f"{d.month:02d}"
 
 
@@ -229,13 +229,14 @@ def build():
     bandcamp = site.get("bandcamp", "")
     github_repo = site.get("github", "")
     lang = site.get("default_lang", "en")
+    site_title = site.get("site_title", "OX500 // CORE INTERFACE")
 
     # ===== NORMALIZE SLUGS =====
     for l in logs:
         l["slug"] = slugify(l.get("slug") or l.get("title", ""))
 
     # ===== FILTER OUT FUTURE-DATED LOGS (do not generate/publish yet) =====
-    today = datetime.now().date()
+    today = datetime.now(timezone.utc).date()
     filtered = []
     for l in logs:
         try:
@@ -393,6 +394,8 @@ def build():
                 "FULL_NAV": full_nav,
                 "YOUTUBE": youtube,
                 "BANDCAMP": bandcamp,
+                "GITHUB": github_repo,
+                "BASE_URL": base_url,
             },
         )
 
@@ -407,7 +410,7 @@ def build():
         d_name = d["name"]
         d_logs = d["logs"]  # newest first
         count = len(d_logs)
-        newest_date = d_logs[0].get("date", datetime.utcnow().date().isoformat())
+        newest_date = d_logs[0].get("date", datetime.now(timezone.utc).date().isoformat())
 
         rel_path = make_disruption_rel_path(d_slug)
         url_path = make_url_path(rel_path)
@@ -438,7 +441,7 @@ def build():
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <link rel="canonical" href="{{CANONICAL}}" />
-  <link rel="source" href="https://github.com/ox500core/ox500">
+  <link rel="source" href="{{GITHUB}}">
 
   <meta property="og:title" content="{{OG_TITLE}}" />
   <meta property="og:description" content="{{OG_DESC}}" />
@@ -447,7 +450,7 @@ def build():
   <meta property="og:image" content="{{OG_IMAGE}}" />
   <meta property="og:site_name" content="OX500" />
 
-  <link rel="stylesheet" href="https://ox500.com/style.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
 
   <script type="application/ld+json">
   {{JSONLD}}
@@ -511,7 +514,7 @@ def build():
               <span class="sep"> // </span>
               RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener me">Bandcamp</a>
               <span class="sep"> // </span>
-              SOURCE_CODE // <a href="https://github.com/ox500core/ox500" target="_blank" rel="noopener noreferrer">GitHub</a>
+              SOURCE_CODE // <a href="{{GITHUB}}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </span>
           </footer>
 
@@ -549,6 +552,8 @@ def build():
                 "NODE_LOG_LIST": "\n".join(node_list),
                 "YOUTUBE": youtube,
                 "BANDCAMP": bandcamp,
+                "GITHUB": github_repo,
+                "BASE_URL": base_url,
             },
         )
 
@@ -603,7 +608,7 @@ def build():
         d = disruptions[d_slug]
         d_name = d["name"]
         d_logs = d["logs"]
-        newest_date = d_logs[0].get("date", datetime.utcnow().date().isoformat())
+        newest_date = d_logs[0].get("date", datetime.now(timezone.utc).date().isoformat())
         node_url = make_url_path(make_disruption_rel_path(d_slug))
         
         disruption_series_parts.append({
@@ -633,11 +638,21 @@ def build():
     index_html = render(
         t_index,
         {
+            "LANG": lang,
+            "BASE_URL": base_url,
+            "CANONICAL": f"{base_url}/",
+            "SITEMAP_URL": f"{base_url}/sitemap.xml",
+            "SITE_TITLE": html.escape(site_title),
+            "OG_IMAGE": og_image,
+            "YOUTUBE": youtube,
+            "BANDCAMP": bandcamp,
+            "GITHUB": github_repo,
             "DISRUPTION_BLOCKS": "\n\n".join(blocks),
             "DISRUPTION_SERIES_JSONLD": json.dumps(disruption_series_jsonld, ensure_ascii=False, indent=2),
         },
     )
     index_html = rewrite_css_links(index_html, base_url)
+
 
     write_text(DIST / "index.html", index_html)
 
@@ -653,7 +668,7 @@ def build():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
         "  <url>",
         f"    <loc>{base_url}/</loc>",
-        f"    <lastmod>{datetime.utcnow().date().isoformat()}</lastmod>",
+        f"    <lastmod>{datetime.now(timezone.utc).date().isoformat()}</lastmod>",
         "    <priority>1.0</priority>",
         "  </url>",
     ]

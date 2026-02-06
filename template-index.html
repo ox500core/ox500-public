@@ -2,7 +2,7 @@
 <html lang="{{LANG}}">
 <head>
   <meta charset="UTF-8">
-  <title>OX500 // CORE INTERFACE</title>
+  <title>{{SITE_TITLE}}</title>
 
   <!-- LANGUAGE & VIEWPORT -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,10 +20,10 @@
   <meta name="google" content="notranslate">
 
   <!-- CANONICAL -->
-  <link rel="canonical" href="https://ox500.com/">
+  <link rel="canonical" href="{{CANONICAL}}">
 
   <!-- SITEMAP HINT -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://ox500.com/sitemap.xml">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITEMAP_URL}}">
 
   <!-- IDENTITY LINKS -->
   <link rel="me" href="{{YOUTUBE}}">
@@ -40,7 +40,7 @@
   <meta property="og:title" content="OX500 // CORE INTERFACE">
   <meta property="og:description" content="Disruption feed. System errors. Textual incident logs linked to audio transmissions and album releases.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ox500.com/">
+  <meta property="og:url" content="{{CANONICAL}}">
 <meta property="og:image" content="{{OG_IMAGE}}" />
   <meta property="og:site_name" content="OX500">
 
@@ -54,10 +54,10 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://ox500.com/#website",
+      "@id": "{{BASE_URL}}/#website",
       "name": "OX500",
       "alternateName": "OX500 System Archive",
-      "url": "https://ox500.com/",
+      "url": "{{CANONICAL}}",
       "inLanguage": "en",
       "description": "OX500 // CORE INTERFACE — an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
       "keywords": "AI poetry, experimental sound, system failure, disruption logs, glitch aesthetics",
@@ -89,9 +89,9 @@
     },
     {
       "@type": "Organization",
-      "@id": "https://ox500.com/#organization",
+      "@id": "{{BASE_URL}}/#organization",
       "name": "OX500",
-      "url": "https://ox500.com/",
+      "url": "{{CANONICAL}}",
       "codeRepository": "{{GITHUB}}",
       "sameAs": [
         "{{YOUTUBE}}",
@@ -118,7 +118,7 @@
         "@type": "ListItem",
         "position": 1,
         "name": "OX500 Core Interface",
-        "item": "https://ox500.com/"
+        "item": "{{CANONICAL}}"
       }
     ]
   }
