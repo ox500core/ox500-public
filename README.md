@@ -22,13 +22,18 @@ This repository documents the evolving structure of the system, not its final st
 
 Included components:
 
-- `data/` — structured system logs (JSON source of the archive)
-- `templates/` — HTML templates used to render logs and index views
-- `styles/` — CSS defining the interface layer
-- `build.py` — static build script (source → generated output)
+- `logs.json` — structured system logs (JSON source of the archive)
+- `template-index.html` — homepage template (disruption feed)
+- `template-log.html` — single log page template
+- `template-series.html` — disruption node / series template
+- `style.css` — interface layer (CSS)
+- `assets/` — static assets (bg / img / icons / css)
+  - `assets/icons/` — favicons + manifest (also copied to `dist/` root)
+- `build.py` — static build script (source → generated output → `dist/`)
 
-Generated output is not tracked in this repository.  
+Generated output (`dist/`) is not tracked in this repository.
 Only the system source is versioned.
+
 
 ---
 
