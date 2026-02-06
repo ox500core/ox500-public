@@ -8,6 +8,19 @@ import html
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
 
+
+# Assets paths (generated)
+ASSETS_CSS_REL = Path("assets") / "css" / "style.css"
+ASSETS_CSS_DIST = DIST / ASSETS_CSS_REL
+
+
+# Assets paths (static copy)
+ASSETS_SRC = ROOT / "assets"
+ASSETS_DIST = DIST / "assets"
+
+BG_SRC = ASSETS_SRC / "bg"
+BG_DIST = ASSETS_DIST / "bg"
+ICONS_SRC = ASSETS_SRC / "icons"
 # HOME: ile disruptions pokazać i ile logów w preview
 HOME_DISRUPTION_LIMIT = 3
 HOME_DISRUPTION_PREVIEW_LOGS = 6
@@ -35,6 +48,31 @@ def render(template: str, mapping: dict) -> str:
     for k, v in mapping.items():
         out = out.replace("{{" + k + "}}", v)
     return out
+
+
+def rewrite_css_links(html_str: str, base_url: str) -> str:
+    """Rewrite any hardcoded /style.css references to /assets/css/style.css.
+
+    This lets you migrate CSS location without immediately editing every template,
+    and keeps fallback templates working.
+    """
+    if not html_str:
+        return html_str
+
+    # Common absolute + relative patterns
+    html_str = html_str.replace('href="/style.css"', 'href="/assets/css/style.css"')
+    html_str = html_str.replace("href='/style.css'", "href='/assets/css/style.css'")
+
+    # Replace absolute base_url/style.css (if present)
+    if base_url:
+        html_str = html_str.replace(f'href="{base_url}/style.css"', f'href="{base_url}/assets/css/style.css"')
+        html_str = html_str.replace(f"href='{base_url}/style.css'", f"href='{base_url}/assets/css/style.css'")
+
+    # Historical hardcode
+    html_str = html_str.replace('href="https://ox500.com/style.css"', 'href="https://ox500.com/assets/css/style.css"')
+    html_str = html_str.replace("href='https://ox500.com/style.css'", "href='https://ox500.com/assets/css/style.css'")
+
+    return html_str
 
 
 def normalize_date(date_str: str) -> str:
@@ -166,6 +204,20 @@ def build():
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True, exist_ok=True)
+    # ===== COPY STATIC ASSETS (assets/* -> dist/assets/*) =====
+    # Copy everything under /assets into /dist/assets (bg/css/img/icons etc.)
+    if ASSETS_SRC.exists():
+        ASSETS_DIST.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(ASSETS_SRC, ASSETS_DIST, dirs_exist_ok=True)
+
+    # ===== COPY FAVICONS TO DIST ROOT (assets/icons/* -> dist/*) =====
+    # Browsers and crawlers commonly expect these at the site root:
+    # /favicon.ico, /apple-touch-icon.png, /site.webmanifest, etc.
+    if ICONS_SRC.exists():
+        for p in ICONS_SRC.iterdir():
+            if p.is_file():
+                shutil.copy2(p, DIST / p.name)
+
 
     cfg = json.loads(read_text(ROOT / "logs.json"))
     site = cfg["site"]
@@ -212,7 +264,14 @@ def build():
     # ===== COPY CSS =====
     css_src = ROOT / "style.css"
     if css_src.exists():
-        write_text(DIST / "style.css", read_text(css_src))
+        # Main stylesheet lives under /assets/css/style.css
+        write_text(ASSETS_CSS_DIST, read_text(css_src))
+
+        # Backward-compat shim: keep /style.css as a tiny forwarder so old links don't break
+        # (Safe for SEO and browsers; keeps existing external references alive.)
+        write_text(DIST / "style.css", """/* OX500 shim — moved to /assets/css/style.css */
+@import url("/assets/css/style.css");
+""")
 
     sitemap_entries = []
 
@@ -336,6 +395,8 @@ def build():
                 "BANDCAMP": bandcamp,
             },
         )
+
+        page = rewrite_css_links(page, base_url)
 
         write_text(DIST / rel_path, page)
         sitemap_entries.append((canonical, log.get("date", "")))
@@ -491,6 +552,8 @@ def build():
             },
         )
 
+        node_page = rewrite_css_links(node_page, base_url)
+
         write_text(DIST / rel_path, node_page)
         sitemap_entries.append((canonical, newest_date))
 
@@ -574,6 +637,8 @@ def build():
             "DISRUPTION_SERIES_JSONLD": json.dumps(disruption_series_jsonld, ensure_ascii=False, indent=2),
         },
     )
+    index_html = rewrite_css_links(index_html, base_url)
+
     write_text(DIST / "index.html", index_html)
 
     # ===== ROBOTS =====
