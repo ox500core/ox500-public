@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{LANG}}">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Language" content="{{LANG}}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="{{LANG}}">
 
   <title>{{PAGE_TITLE}}</title>
-  <meta name="description" content="{{DESCRIPTION}}" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="theme-color" content="#050608" />
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#050608">
 
-  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="source" href="{{GITHUB}}">
 
-  <!-- SOURCE / SYSTEM ORIGIN -->
-  <link rel="source" href="{{GITHUB}}" />
+  <meta property="og:title" content="{{OG_TITLE}}">
+  <meta property="og:description" content="{{OG_DESC}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:site_name" content="OX500">
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="{{OG_TITLE}}" />
-  <meta property="og:description" content="{{OG_DESC}}" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{CANONICAL}}" />
-  <meta property="og:image" content="{{OG_IMAGE}}" />
-  <meta property="og:site_name" content="OX500" />
-
-  <!-- STYLES -->
-  <link rel="preconnect" href="{{BASE_URL}}" crossorigin />
+  <link rel="preconnect" href="{{BASE_URL}}" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
   {{JSONLD}}
   </script>
+
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
-<body>
+<body class="page-log">
   <a class="skip-link" href="#content">Skip to content</a>
   <div id="ox500-bg" aria-hidden="true"></div>
-
-  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -50,7 +48,6 @@
 
       <main id="content" class="shell">
         <div class="shell-inner">
-
           <header class="top-bar">
             <div class="brand">
               <div class="brand-main">OX500</div>
@@ -73,17 +70,19 @@
             <article class="log-article">
               <header class="log-article-header">
                 <h1>LOG: {{LOG_ID}} // {{LOG_TITLE}}</h1>
-
                 <p class="log-meta">
-                  OX500 // DISRUPTION · {{NODE_META}}archive timestamp: {{LOG_DATE}}
+                  <span class="meta-line">OX500 // DISRUPTION</span>
+                  <span class="meta-line">{{NODE_META}}ARCHIVE TIMESTAMP: {{LOG_DATE}}</span>
                 </p>
-
                 <nav aria-label="Log navigation" class="log-nav">
                   {{FULL_NAV}}
                 </nav>
               </header>
 
               <pre class="log-pre">{{LOG_TEXT}}</pre>
+              <nav aria-label="Log navigation bottom" class="log-nav log-nav-bottom">
+                {{FULL_NAV}}
+              </nav>
             </article>
           </section>
 
@@ -91,17 +90,13 @@
             <span>OX500 // ARCHIVE_NODE</span>
             <span>INDEXABLE_LOG_PAGE</span>
             <span class="footer-output">
-              OUTPUT_PORT //
-              <a href="{{YOUTUBE}}" target="_blank" rel="noopener noreferrer me">YouTube</a>
+              OUTPUT_PORT // <a href="{{YOUTUBE}}" target="_blank" rel="noopener noreferrer me">YouTube</a>
               <span class="sep"> // </span>
-              RELEASE_PORT //
-              <a href="{{BANDCAMP}}" target="_blank" rel="noopener noreferrer me">Bandcamp</a>
+              RELEASE_PORT // <a href="{{BANDCAMP}}" target="_blank" rel="noopener noreferrer me">Bandcamp</a>
               <span class="sep"> // </span>
-              SOURCE_CODE //
-              <a href="{{GITHUB}}" target="_blank" rel="noopener noreferrer">GitHub</a>
+              SOURCE_CODE // <a href="{{GITHUB}}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </span>
           </footer>
-
         </div>
       </main>
     </div>

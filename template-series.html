@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="{{LANG}}">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Language" content="{{LANG}}" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="{{LANG}}">
 
   <title>{{PAGE_TITLE}}</title>
-  <meta name="description" content="{{DESCRIPTION}}" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <meta name="theme-color" content="#050608" />
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#050608">
 
-  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="source" href="{{GITHUB}}">
 
-  <!-- SOURCE / SYSTEM ORIGIN -->
-  <link rel="source" href="{{GITHUB}}" />
+  <meta property="og:title" content="{{OG_TITLE}}">
+  <meta property="og:description" content="{{OG_DESC}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:site_name" content="OX500">
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="{{OG_TITLE}}" />
-  <meta property="og:description" content="{{OG_DESC}}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="{{CANONICAL}}" />
-  <meta property="og:image" content="{{OG_IMAGE}}" />
-  <meta property="og:site_name" content="OX500" />
-
-  <!-- FAVICON -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-  <!-- STYLES -->
-  <link rel="preconnect" href="{{BASE_URL}}" crossorigin />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="{{BASE_URL}}" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
   {{JSONLD}}
   </script>
+
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   <div id="ox500-bg" aria-hidden="true"></div>
-  
-  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -52,7 +48,6 @@
 
       <main id="content" class="shell">
         <div class="shell-inner">
-
           <header class="top-bar">
             <div class="brand">
               <div class="brand-main">OX500</div>
@@ -75,12 +70,10 @@
             <article class="log-article">
               <header class="log-article-header">
                 <h1>{{H1}}</h1>
-
                 <p class="log-meta">// grouped logs</p>
                 <p class="log-meta">{{META}}</p>
-
                 <nav aria-label="Site navigation" class="log-nav">
-                  <a class="nav-home" href="/" rel="home">← CORE INTERFACE</a>
+                  <a class="nav-home" href="/" rel="home">&larr; CORE INTERFACE</a>
                 </nav>
               </header>
 
@@ -101,7 +94,6 @@
               SOURCE_CODE // <a href="{{GITHUB}}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </span>
           </footer>
-
         </div>
       </main>
     </div>

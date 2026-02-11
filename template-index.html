@@ -3,51 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>{{SITE_TITLE}}</title>
-
-  <!-- LANGUAGE & VIEWPORT -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Language" content="{{LANG}}" />
+  <meta http-equiv="Content-Language" content="{{LANG}}">
 
-  <!-- CORE SEO -->
-  <meta name="description" content="OX500 System Archive — experimental disruption logs exploring AI compliance, system failure, and digital consciousness. Linked to audio transmissions on YouTube and album releases on Bandcamp.">
+  <meta name="description" content="OX500 System Archive - experimental disruption logs exploring AI compliance, system failure, and digital consciousness.">
   <meta name="keywords" content="OX500, experimental poetry, AI compliance, system failure, disruption logs, glitch aesthetics, digital art, noise music, bandcamp, youtube">
   <meta name="author" content="OX500">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#050608">
-
-  <!-- GOOGLE -->
   <meta name="googlebot" content="index, follow">
   <meta name="google" content="notranslate">
 
-  <!-- CANONICAL -->
   <link rel="canonical" href="{{CANONICAL}}">
-
-  <!-- SITEMAP HINT -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITEMAP_URL}}">
-
-  <!-- IDENTITY LINKS -->
   <link rel="me" href="{{YOUTUBE}}">
   <link rel="me" href="{{BANDCAMP}}">
-
-  <!-- SOURCE / SYSTEM ORIGIN -->
   <link rel="source" href="{{GITHUB}}">
-
-  <!-- ALTERNATE / EXTERNAL PORTS -->
   <link rel="alternate" type="text/html" href="{{YOUTUBE}}" title="OX500CORE // AUDIO TRANSMISSIONS">
   <link rel="alternate" type="text/html" href="{{BANDCAMP}}" title="OX500 // ALBUM RELEASES (BANDCAMP)">
 
-  <!-- OPEN GRAPH / LINK PREVIEWS -->
   <meta property="og:title" content="OX500 // CORE INTERFACE">
   <meta property="og:description" content="Disruption feed. System errors. Textual incident logs linked to audio transmissions and album releases.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{CANONICAL}}">
-<meta property="og:image" content="{{OG_IMAGE}}" />
+  <meta property="og:image" content="{{OG_IMAGE}}">
   <meta property="og:site_name" content="OX500">
 
-  <!-- FAVICON -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- STRUCTURED DATA / JSON-LD -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,33 +43,11 @@
       "alternateName": "OX500 System Archive",
       "url": "{{CANONICAL}}",
       "inLanguage": "en",
-      "description": "OX500 // CORE INTERFACE — an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
+      "description": "OX500 // CORE INTERFACE - an experimental system archive of disruption logs and textual incident records linked to audio transmissions and album releases.",
       "keywords": "AI poetry, experimental sound, system failure, disruption logs, glitch aesthetics",
-      "genre": [
-        "Experimental Music",
-        "Digital Poetry",
-        "System Art"
-      ],
-      "about": [
-        {
-          "@type": "Thing",
-          "name": "Artificial intelligence compliance"
-        },
-        {
-          "@type": "Thing",
-          "name": "System failure"
-        },
-        {
-          "@type": "Thing",
-          "name": "Digital consciousness"
-        }
-      ],
+      "genre": ["Experimental Music", "Digital Poetry", "System Art"],
       "codeRepository": "{{GITHUB}}",
-      "sameAs": [
-        "{{YOUTUBE}}",
-        "{{BANDCAMP}}",
-        "{{GITHUB}}"
-      ]
+      "sameAs": ["{{YOUTUBE}}", "{{BANDCAMP}}", "{{GITHUB}}"]
     },
     {
       "@type": "Organization",
@@ -93,22 +55,16 @@
       "name": "OX500",
       "url": "{{CANONICAL}}",
       "codeRepository": "{{GITHUB}}",
-      "sameAs": [
-        "{{YOUTUBE}}",
-        "{{BANDCAMP}}",
-        "{{GITHUB}}"
-      ]
+      "sameAs": ["{{YOUTUBE}}", "{{BANDCAMP}}", "{{GITHUB}}"]
     }
   ]
 }
   </script>
 
-  <!-- DISRUPTION FEED (SERIES) SCHEMA -->
   <script type="application/ld+json">
   {{DISRUPTION_SERIES_JSONLD}}
   </script>
 
-  <!-- BREADCRUMBS -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -124,15 +80,15 @@
   }
   </script>
 
-  <!-- STYLES -->
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="page-core">
   <a class="skip-link" href="#content">Skip to content</a>
   <div id="ox500-bg" aria-hidden="true"></div>
-
-  <!-- GLOBAL VEINS -->
   <div class="ox-veins"></div>
 
   <div class="ox500-shell">
@@ -144,8 +100,6 @@
 
       <main id="content" class="shell">
         <div class="shell-inner">
-
-          <!-- TOP BAR -->
           <header class="top-bar">
             <div class="brand">
               <div class="brand-main">OX500</div>
@@ -156,7 +110,6 @@
             </div>
           </header>
 
-          <!-- HEADLINE -->
           <section class="headline">
             <h1 class="headline-core">
               <span>CORE</span>
@@ -165,24 +118,20 @@
             <div class="headline-error ERROR" data-glitch="ERROR">ERROR</div>
           </section>
 
-          <!-- ARCHIVE PORTS -->
           <div class="archive-label">ARCHIVE</div>
           <nav aria-label="External archive ports" class="archive-external">
             AUDIO_TRANSMISSIONS // <a href="{{YOUTUBE}}" target="_blank" rel="noopener me">YouTube</a><br>
             ALBUM_RELEASES // <a href="{{BANDCAMP}}" target="_blank" rel="noopener me">Bandcamp</a>
           </nav>
 
-          <!-- LATEST DISRUPTIONS -->
           <section class="content">
             <h2 class="content-head">
               <span>DISRUPTION_FEED</span>
-              <span>// open node → see all logs</span>
+              <span>// open node -> see all logs</span>
             </h2>
-
             {{DISRUPTION_BLOCKS}}
           </section>
 
-          <!-- FOOTER -->
           <footer class="footer">
             <span>OX500 // CORE INTERFACE v0.3</span>
             <span>ARCHIVE_OF_FAILURE // NODES</span>
@@ -194,12 +143,9 @@
               SOURCE_CODE // <a href="{{GITHUB}}" target="_blank" rel="noopener noreferrer">GitHub</a>
             </span>
           </footer>
-
         </div>
       </main>
-
     </div>
   </div>
-
 </body>
 </html>

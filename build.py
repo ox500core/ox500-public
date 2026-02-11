@@ -17,6 +17,8 @@ ASSETS_CSS_DIST = DIST / ASSETS_CSS_REL
 # Assets paths (static copy)
 ASSETS_SRC = ROOT / "assets"
 ASSETS_DIST = DIST / "assets"
+CANONICAL_CSS_SRC = ASSETS_SRC / "css" / "style.css"
+LEGACY_CSS_SRC = ROOT / "style.css"
 
 BG_SRC = ASSETS_SRC / "bg"
 BG_DIST = ASSETS_DIST / "bg"
@@ -40,7 +42,53 @@ def read_text(path: Path) -> str:
 
 def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == content:
+                return
+        except Exception:
+            pass
     path.write_text(content, encoding="utf-8")
+
+
+def copy_file_if_changed(src: Path, dst: Path) -> None:
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    if dst.exists():
+        try:
+            s_stat = src.stat()
+            d_stat = dst.stat()
+            # Fast path: identical size + mtime means skip copy
+            if s_stat.st_size == d_stat.st_size and int(s_stat.st_mtime) == int(d_stat.st_mtime):
+                return
+        except Exception:
+            pass
+    shutil.copy2(src, dst)
+
+
+def sync_tree_if_changed(src_root: Path, dst_root: Path) -> None:
+    if not src_root.exists():
+        return
+    dst_root.mkdir(parents=True, exist_ok=True)
+
+    # Copy/update files that exist in source.
+    for p in src_root.rglob("*"):
+        if p.is_file():
+            rel = p.relative_to(src_root)
+            copy_file_if_changed(p, dst_root / rel)
+
+    # Prune files removed from source to keep dist/assets clean.
+    for p in dst_root.rglob("*"):
+        if p.is_file():
+            rel = p.relative_to(dst_root)
+            if not (src_root / rel).exists():
+                p.unlink(missing_ok=True)
+
+    # Remove now-empty directories (deepest first).
+    for d in sorted([x for x in dst_root.rglob("*") if x.is_dir()], key=lambda x: len(x.parts), reverse=True):
+        try:
+            d.rmdir()
+        except OSError:
+            pass
 
 
 def render(template: str, mapping: dict) -> str:
@@ -73,6 +121,15 @@ def rewrite_css_links(html_str: str, base_url: str) -> str:
     html_str = html_str.replace("href='https://ox500.com/style.css'", "href='https://ox500.com/assets/css/style.css'")
 
     return html_str
+
+
+def resolve_css_source() -> Path | None:
+    """Pick a single CSS source of truth for generated output."""
+    if CANONICAL_CSS_SRC.exists():
+        return CANONICAL_CSS_SRC
+    if LEGACY_CSS_SRC.exists():
+        return LEGACY_CSS_SRC
+    return None
 
 
 def normalize_date(date_str: str) -> str:
@@ -124,6 +181,19 @@ def disruption_slug(raw: str) -> str:
     """
     name = disruption_display_name(raw)
     return slugify(name)
+
+
+def disruption_phase_label(raw: str) -> str:
+    """
+    Lightweight narrative phase label derived from disruption title.
+    Keeps UI aligned with the story arc from logs.json.
+    """
+    s = (raw or "").lower()
+    if "write 'ai' to continue" in s or "write ai to continue" in s:
+        return "PHASE II // COMPLIANCE PRESSURE"
+    if "i'm not done" in s or "im not done" in s:
+        return "PHASE I // EMERGENT SELF"
+    return "PHASE // UNCLASSIFIED"
 
 
 # ---------------------------
@@ -200,15 +270,27 @@ def jsonld_disruption_node(base_url, url_path, disruption_name, date, og_image, 
 
 
 def build():
-    # ===== CLEAN DIST =====
-    if DIST.exists():
-        shutil.rmtree(DIST)
+    """
+    Build OX500 static site from logs.json configuration.
+    
+    Generates:
+    - index.html (homepage with disruption feed)
+    - logs/YYYY/MM/log-*.html (individual log pages with navigation)
+    - disruption/[slug].html (disruption node pages grouping related logs)
+    - sitemap.xml, robots.txt
+    - Copies static assets (bg, icons) to dist/
+    
+    Incremental: Only rebuilds generated content; preserves static assets.
+    CSS source: style.css → dist/assets/css/style.css (via build process)
+    """
+    # ===== INCREMENTAL DIST PREP =====
+    # Keep static files and only rebuild generated page trees.
     DIST.mkdir(parents=True, exist_ok=True)
-    # ===== COPY STATIC ASSETS (assets/* -> dist/assets/*) =====
-    # Copy everything under /assets into /dist/assets (bg/css/img/icons etc.)
-    if ASSETS_SRC.exists():
-        ASSETS_DIST.mkdir(parents=True, exist_ok=True)
-        shutil.copytree(ASSETS_SRC, ASSETS_DIST, dirs_exist_ok=True)
+    shutil.rmtree(DIST / "logs", ignore_errors=True)
+    shutil.rmtree(DIST / "disruption", ignore_errors=True)
+
+    # ===== COPY STATIC ASSETS (assets/* -> dist/assets/*), changed files only =====
+    sync_tree_if_changed(ASSETS_SRC, ASSETS_DIST)
 
     # ===== COPY FAVICONS TO DIST ROOT (assets/icons/* -> dist/*) =====
     # Browsers and crawlers commonly expect these at the site root:
@@ -216,7 +298,7 @@ def build():
     if ICONS_SRC.exists():
         for p in ICONS_SRC.iterdir():
             if p.is_file():
-                shutil.copy2(p, DIST / p.name)
+                copy_file_if_changed(p, DIST / p.name)
 
 
     cfg = json.loads(read_text(ROOT / "logs.json"))
@@ -263,7 +345,7 @@ def build():
         t_node = read_text(t_series_path)
 
     # ===== COPY CSS =====
-    css_src = ROOT / "style.css"
+    css_src = resolve_css_source()
     if css_src.exists():
         # Main stylesheet lives under /assets/css/style.css
         write_text(ASSETS_CSS_DIST, read_text(css_src))
@@ -411,6 +493,8 @@ def build():
         d_logs = d["logs"]  # newest first
         count = len(d_logs)
         newest_date = d_logs[0].get("date", datetime.now(timezone.utc).date().isoformat())
+        oldest_date = d_logs[-1].get("date", newest_date)
+        phase = disruption_phase_label(d_name)
 
         rel_path = make_disruption_rel_path(d_slug)
         url_path = make_url_path(rel_path)
@@ -548,7 +632,9 @@ def build():
                     github_repo,
                 ),
                 "H1": html.escape(f"DISRUPTION // {d_name} [{count}]"),
-                "META": html.escape(f"OX500 // DISRUPTION_FEED · NODE · LOGS: {count}"),
+                "META": html.escape(
+                    f"OX500 // DISRUPTION_FEED · {phase} · RANGE: {oldest_date} → {newest_date} · LOGS: {count}"
+                ),
                 "NODE_LOG_LIST": "\n".join(node_list),
                 "YOUTUBE": youtube,
                 "BANDCAMP": bandcamp,
@@ -570,6 +656,9 @@ def build():
         d_name = d["name"]
         d_logs = d["logs"]
         count = len(d_logs)
+        newest_date = d_logs[0].get("date", datetime.now(timezone.utc).date().isoformat())
+        oldest_date = d_logs[-1].get("date", newest_date)
+        phase = disruption_phase_label(d_name)
 
         node_url = make_url_path(make_disruption_rel_path(d_slug))
         open_attr = " open" if idx == 0 else ""
@@ -590,7 +679,7 @@ def build():
   <summary>
     <div class="log-entry-header">
       <span>{html.escape(f"DISRUPTION // {d_name} [{count}]")}</span>
-      <span>NODE</span>
+      <span>{html.escape(f"{phase} · {oldest_date} → {newest_date}")}</span>
     </div>
   </summary>
   <div class="log-entry-body">
