@@ -1,4 +1,4 @@
-# OX500
+> **Portfolio zawodowe Michała Wróblewskiego:** [procesy biznesowe, wdrożenia cyfrowe i automatyzacje — cztery studia przypadku](portfolio/README.md).\n\n---\n\n# OX500
 
 ![Last log](https://img.shields.io/badge/last_log-active-critical?style=flat)
 
