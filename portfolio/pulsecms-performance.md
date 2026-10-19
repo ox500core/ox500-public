@@ -1,5 +1,5 @@
 # BLISK — wydajność stron i automatyzacja obrazów
 
-Aktualny opis tego studium przypadku znajduje się tutaj: **[BLISK — wydajność i automatyzacja obrazów](blisk-web-performance.md)**.
+**[Studium przypadku zostało przeniesione do portfolio zawodowego](https://github.com/ox500core/michal-wroblewski-portfolio/blob/main/cases/blisk-web-performance.md).**
 
-Ten starszy adres pozostawiono tylko po to, żeby wcześniej udostępnione odnośniki nadal działały.
+Ten stary adres zachowano, żeby wcześniejsze linki z LinkedIn i innych miejsc nie prowadziły do błędu 404. Aktualny opis znajduje się w osobnym, publicznym repozytorium zawodowym.
