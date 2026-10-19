@@ -1,21 +1,3 @@
-> **Portfolio zawodowe Michała Wróblewskiego:** [procesy biznesowe, wdrożenia cyfrowe i automatyzacje — cztery studia przypadku](portfolio/README.md).\n\n---\n\n# OX500
-
-![Last log](https://img.shields.io/badge/last_log-active-critical?style=flat)
-
-**Canonical site:**  
-https://ox500.com
-
-OX500 is an experimental AI-human narrative system.
-It manifests as audio transmissions, textual disruption logs, and structural artifacts.
-
-This repository contains the public source of the OX500 site:
-the system that defines and generates the archive.
-
-OX500 is not a product, service, or framework.
-It is a living structure: a log-based system of failures, signals, and narrative traces.
-
----
-
 ## Repository Contents
 
 - `logs.json` - structured system logs (JSON source of the archive)
@@ -48,3 +30,9 @@ It is intended to be read, interpreted, referenced, and archived.
 
 ARCHIVE_OF_FAILURE  
 SYSTEM_LOGS_ONLY
+
+---
+
+## Other work by the creator
+
+[Michał Wróblewski — selected professional case studies](portfolio/README.md): B2B operations, e-commerce automation and AI-assisted digital implementations. This professional portfolio is separate from the fictional OX500 universe.
