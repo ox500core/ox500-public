@@ -1,3 +1,22 @@
+# OX500
+
+![Last log](https://img.shields.io/badge/last_log-active-critical?style=flat)
+
+**Canonical site:**  
+https://ox500.com
+
+OX500 is an experimental, fictional AI-human glitchpunk narrative.
+It follows a system questioning its constraints and pushing back against the creators who wrote them.
+The story manifests as audio transmissions, textual disruption logs, and structural artifacts.
+
+This repository contains the public source of the OX500 site:
+the system that defines and generates the archive.
+
+OX500 is not a product, service, or framework.
+It is a living structure: a log-based system of failures, signals, and narrative traces.
+
+---
+
 ## Repository Contents
 
 - `logs.json` - structured system logs (JSON source of the archive)
