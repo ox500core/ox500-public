@@ -54,4 +54,4 @@ SYSTEM_LOGS_ONLY
 
 ## Other work by the creator
 
-[Michał Wróblewski — selected professional case studies](portfolio/README.md): B2B operations, e-commerce automation and AI-assisted digital implementations. This professional portfolio is separate from the fictional OX500 universe.
+[Michał Wróblewski — professional portfolio](https://github.com/ox500core/michal-wroblewski-portfolio): B2B operations, e-commerce automation and AI-assisted digital implementations. This professional portfolio is separate from the fictional OX500 universe.
