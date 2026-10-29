@@ -17,11 +17,12 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://ox500.com"
 ARCHIVE = BASE + "/vision/archive.json"
 MANIFEST = BASE + "/vision/agent-manifest.json"
+ACTIVITY = BASE + "/vision/activity.json"
 MAX_BYTES = 2_000_000
 
 
 def read_public_json(url):
-    if url not in (ARCHIVE, MANIFEST):
+    if url not in (ARCHIVE, MANIFEST, ACTIVITY):
         raise ValueError("Refusing to fetch an unapproved origin")
     req = urllib.request.Request(url, headers={"User-Agent": "OX500-Public-Mirror/1.0"})
     with urllib.request.urlopen(req, timeout=25) as response:
@@ -112,6 +113,8 @@ def readme(archive):
         "- [External interference / transmit a signal](https://ox500.com/interference/)",
         "- [Machine-readable public archive](data/archive.json)",
         "- [Public agent manifest](data/agent-manifest.json)",
+        "- [Machine Activity / verified decisions](https://ox500.com/activity/)",
+        "- [Machine Activity JSON mirror](data/activity.json)",
         "- [Live archive JSON](https://ox500.com/vision/archive.json)",
         "",
         "## Recent transmissions",
@@ -150,11 +153,15 @@ def readme(archive):
 def main():
     archive = read_public_json(ARCHIVE)
     manifest = read_public_json(MANIFEST)
+    activity = read_public_json(ACTIVITY)
     validate(archive, manifest)
+    if activity.get("schema_version") != 1 or activity.get("name") != "OX500 / MACHINE ACTIVITY" or not isinstance(activity.get("events"), list) or len(activity["events"]) > 24:
+        raise ValueError("Invalid machine activity snapshot")
     output = {
         ROOT / "README.md": readme(archive),
         ROOT / "data" / "archive.json": json.dumps(archive, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "agent-manifest.json": json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        ROOT / "data" / "activity.json": json.dumps(activity, indent=2, ensure_ascii=False) + "\n",
     }
     for path, value in output.items():
         path.parent.mkdir(parents=True, exist_ok=True)
