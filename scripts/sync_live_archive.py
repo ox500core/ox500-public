@@ -37,7 +37,7 @@ def safe_text(value, limit=220):
     """User-facing Markdown only; avoid accidental HTML or link injection."""
     val = re.sub(r"[\x00-\x1f\x7f]+", " ", str(value or ""))
     val = val.replace("<", "‹").replace(">", "›")
-    for ch in "\\`*_[]|":
+    for ch in "\`*_[]|":
         val = val.replace(ch, "\\" + ch)
     return val.strip()[:limit]
 
@@ -68,7 +68,7 @@ def validate(archive, manifest):
             raise ValueError("Unpublished future log encountered")
         canonical = urlparse(log.get("canonical", ""))
         if canonical.scheme != "https" or canonical.netloc != "ox500.com" or not re.fullmatch(
-            r"/logs/[0-9]{4}/[0-9]{2}/log-[0-9]{5}-[a-z0-9-]+\\.html", canonical.path
+            r"/logs/[0-9]{4}/[0-9]{2}/log-[0-9]{5}-[a-z0-9-]+\.html", canonical.path
         ):
             raise ValueError("Unexpected public canonical URL")
         if not canonical.path.split("/log-")[-1].startswith(ident + "-"):
@@ -118,14 +118,14 @@ def readme(archive):
         "",
     ]
     for item in logs[:8]:
-        lines.append(f"- \`{item['id']}\` · {safe_text(item['date'])} · **[{safe_text(item['title'])}]({item['canonical']})**")
+        lines.append(f"- `{item['id']}` · {safe_text(item['date'])} · **[{safe_text(item['title'])}]({item['canonical']})**")
     lines += [
         "",
         "## Repository boundary",
         "",
         "This is the **public-facing OX500 repository**, not the private live publishing source.",
-        "Historical \`logs.json\`, \`build.py\` and HTML templates in this repository are an **older public snapshot**. Do not mistake them for the active production pipeline.",
-        "The files in \`data/\` and this README are refreshed from **already published** ox500.com machine endpoints. No unpublished material, music-production cues, credentials or private operational state is copied.",
+        "Historical `logs.json`, `build.py` and HTML templates in this repository are an **older public snapshot**. Do not mistake them for the active production pipeline.",
+        "The files in `data/` and this README are refreshed from **already published** ox500.com machine endpoints. No unpublished material, music-production cues, credentials or private operational state is copied.",
         "",
         "The original published works retain their IDs and permanent URLs. The public archive data is a mirror, not a new source of truth.",
         "",
