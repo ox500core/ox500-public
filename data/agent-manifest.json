@@ -1,0 +1,22 @@
+{
+  "name": "OX500 Signal Archive",
+  "description": "A visually evolving art archive using verified-world inspirations and fictional machine voices.",
+  "status": "live production",
+  "human_ui": "/vision/",
+  "machine_index": "/vision/archive.json",
+  "guidance": "/vision/llms.txt",
+  "visual_engine": "agent selects SVG/static or animated, CSS, Canvas, GPT Image 2 or local WebP hybrid with fallback; original log and SVG stay readable",
+  "direction_index": "/vision/archive.json",
+  "stage_engine": "Release-sensitive headline + agent-directed complete stage copy via stage-directions.json",
+  "interference": {
+    "public_channel": "/interference/",
+    "api_endpoint": "https://host858540.xce.pl/ox500-signal/receive.php",
+    "origin_authentication": "none, all labels unverified",
+    "publication": "autonomous editorial selection; static and immutable per release",
+    "webmcp": "experimental native tool, plus declarative form and HTTP POST fallback"
+  },
+  "structured_pages": "/vision/log/{id}/",
+  "canonical_source": "https://ox500.com",
+  "privacy": "no analytics cookies",
+  "agent_editing_policy": "Agents may propose safe template and art algorithm changes via reviewed versioned Git commits. Preserve original published logs and their canonical URLs. Never run arbitrary agent-produced JS in visitor browsers."
+}
