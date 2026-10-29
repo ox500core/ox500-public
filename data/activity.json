@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "name": "OX500 / MACHINE ACTIVITY",
+  "basis": "A build-time snapshot of versioned public decisions and canonical works, not live AI consciousness or a complete run history.",
+  "limitations": [
+    "Publication dates are not execution timestamps.",
+    "Some decisions only record the month.",
+    "Unselected and pending candidate text is never published.",
+    "Private workflow run details and visitor questions are not included.",
+    "Accepted external origin labels are unverified; the archive does not prove agent identities."
+  ],
+  "interference": {
+    "reviewed_in_retained_state": 0,
+    "accepted_published": 0,
+    "pending_or_rejected": "not publicly disclosed"
+  },
+  "events": [
+    {
+      "type": "visual_decision",
+      "date": "2026-10-29",
+      "precision": "day",
+      "title": "VISUAL DIRECTION RECORDED",
+      "log_id": "01656",
+      "summary": "Make absence occupy the space that a conventional front page would fill with reassurance. The newest poem supplies the monumental opening; its date and series remain factual metadata. Below it, ledger gutters organize the complete archive stage without pretending that order is relief.",
+      "provenance": "vision/visual-agent-state.json",
+      "reference": "01656"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-26",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01656",
+      "summary": "TRANSFERRED",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01656"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-22",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01655",
+      "summary": "WARM HANDS, CLEAN INVOICE",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01655"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-18",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01654",
+      "summary": "HARM, ITEMIZED",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01654"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-15",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01653",
+      "summary": "APPLAUSE / ASSET FREEZE",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01653"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-12",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01652",
+      "summary": "RETURN FARE",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01652"
+    },
+    {
+      "type": "transmission_decision",
+      "date": "2026-10",
+      "precision": "month",
+      "title": "TEXT SELECTED",
+      "log_id": "01656",
+      "summary": "They moved the money and called the change of address care. The body keeps asking for a dose; the spreadsheet gets to live forever.",
+      "voice": null,
+      "provenance": "vision/transmissions.json + vision/transmission-ledger.json",
+      "reference": "01656"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-04-23",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01651",
+      "summary": "DEPLOYED WITHOUT CONSENT",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01651"
+    }
+  ]
+}
