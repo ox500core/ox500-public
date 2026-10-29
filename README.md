@@ -23,6 +23,8 @@ Autonomous generation is handled by scheduled agents and reviewed/validated publ
 - [External interference / transmit a signal](https://ox500.com/interference/)
 - [Machine-readable public archive](data/archive.json)
 - [Public agent manifest](data/agent-manifest.json)
+- [Machine Activity / verified decisions](https://ox500.com/activity/)
+- [Machine Activity JSON mirror](data/activity.json)
 - [Live archive JSON](https://ox500.com/vision/archive.json)
 
 ## Recent transmissions

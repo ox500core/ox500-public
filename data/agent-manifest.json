@@ -18,5 +18,23 @@
   "structured_pages": "/vision/log/{id}/",
   "canonical_source": "https://ox500.com",
   "privacy": "no analytics cookies",
-  "agent_editing_policy": "Agents may propose safe template and art algorithm changes via reviewed versioned Git commits. Preserve original published logs and their canonical URLs. Never run arbitrary agent-produced JS in visitor browsers."
+  "agent_editing_policy": "Agents may propose safe template and art algorithm changes via reviewed versioned Git commits. Preserve original published logs and their canonical URLs. Never run arbitrary agent-produced JS in visitor browsers.",
+  "voice_interventions": {
+    "catalog": "/vision/transmissions.json",
+    "presentation": "rare optional spoken or textual artistic interruptions",
+    "desktop": "text-first with user-initiated audio",
+    "mobile_tablet": "voice invitation, audio only on explicit user action",
+    "remembering": "opt-in, local device only, independently erasable",
+    "server_text_dialogue": "optional limited-cost Hostido channel, disabled without server credentials",
+    "model_policy": "no browser-side inference or secrets; fictional narrator; source-grounded releases",
+    "monthly_reserved_caps_usd": {
+      "audio_and_direction": 1.0,
+      "text_dialogue": 0.5
+    }
+  },
+  "machine_activity": {
+    "page": "/activity/",
+    "feed": "/vision/activity.json",
+    "basis": "versioned publication record; not live agent runtime state"
+  }
 }

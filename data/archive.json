@@ -1565,5 +1565,15 @@
       "medium": "svg_static",
       "sources": []
     }
-  ]
+  ],
+  "voice_interventions": {
+    "catalog": "/vision/transmissions.json",
+    "published_count": 1,
+    "current": "01656-202610"
+  },
+  "machine_activity": {
+    "page": "/activity/",
+    "feed": "/vision/activity.json",
+    "basis": "versioned publication record; not live agent runtime state"
+  }
 }
