@@ -30,6 +30,8 @@ class PublicSyncTests(unittest.TestCase):
         self.assertIn("data/archive.json", page)
         self.assertIn("older public snapshot", page)
         self.assertNotIn("OPENAI_API_KEY", page)
+        self.assertNotIn("## Other work by the creator", page)
+        self.assertNotIn("professional portfolio", page.lower())
 
     def test_never_accept_remote_links(self):
         self.archive["logs"][0]["canonical"] = "https://attacker.example/logs/2026/10/log-01655-warm-hands-clean-invoice.html"
