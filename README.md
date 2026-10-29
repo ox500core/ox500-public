@@ -52,10 +52,6 @@ The original published works retain their IDs and permanent URLs. The public arc
 - [YouTube](https://www.youtube.com/@ox500core)
 - [Bandcamp](https://ox500.bandcamp.com)
 
-## Other work by the creator
-
-[Michał Wróblewski — professional portfolio](https://github.com/ox500core/michal-wroblewski-portfolio). Separate from the fictional OX500 universe.
-
 ---
 
 *This public front page is synchronized automatically from published OX500 signals. Last content is determined by the canonical site, not by this repository's commit history.*
