@@ -79,7 +79,7 @@ def validate(archive, manifest):
     return logs
 
 
-def readme(archive):
+def readme(archive, manifest):
     logs = sorted(archive["logs"], key=lambda x: (x["date"], x["id"]), reverse=True)
     latest = logs[0]
     stage = archive["current_stage"]
@@ -87,6 +87,18 @@ def readme(archive):
     if not hero:
         hero = safe_text(latest["title"])
     medium = safe_text(archive.get("current_medium") or "procedural SVG", 70)
+    identity = manifest.get("public_identity", {})
+    if not isinstance(identity, dict):
+        raise ValueError("Missing public identity")
+    descriptions = [
+        identity.get(key, "") for key in (
+            "overview", "editorial", "creative_boundary", "preservation",
+            "interface", "interaction", "accountability"
+        )
+    ]
+    if not all(isinstance(item, str) and 40 <= len(item) <= 650 for item in descriptions):
+        raise ValueError("Invalid Luna-controlled public identity")
+
     lines = [
         "# OX500 // SIGNAL ARCHIVE",
         "",
@@ -94,8 +106,7 @@ def readme(archive):
         "",
         f"> **{hero}**",
         "",
-        "An evolving fictional art archive about human harm, institutions, technology, resistance, and the distance between official language and lived consequences.",
-        "Its original log texts remain fixed. The editorial framing, graphics, and interface evolve as new transmissions are released.",
+        *[safe_text(item, 650) for item in descriptions[:4]],
         "",
         f"**Published transmissions:** {len(logs)}  ·  **Current visual medium:** {medium}  ·  **Latest release:** {safe_text(latest['date'])}",
         "",
@@ -105,8 +116,7 @@ def readme(archive):
         "",
         "## The living archive",
         "",
-        "The production system publishes dated creative works, runs an independent visual director and accepts moderated outside artistic signals.",
-        "Autonomous generation is handled by scheduled agents and reviewed/validated publishing code; no AI agent runs in visitors' browsers.",
+        *[safe_text(item, 650) for item in descriptions[4:]],
         "",
         "- [Experience OX500](https://ox500.com/)",
         "- [Explore all published transmissions](https://ox500.com/#index)",
@@ -154,7 +164,7 @@ def main():
     if activity.get("schema_version") != 1 or activity.get("name") != "OX500 / MACHINE ACTIVITY" or not isinstance(activity.get("events"), list) or len(activity["events"]) > 24:
         raise ValueError("Invalid machine activity snapshot")
     output = {
-        ROOT / "README.md": readme(archive),
+        ROOT / "README.md": readme(archive, manifest),
         ROOT / "data" / "archive.json": json.dumps(archive, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "agent-manifest.json": json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "activity.json": json.dumps(activity, indent=2, ensure_ascii=False) + "\n",
