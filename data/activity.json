@@ -10,11 +10,31 @@
     "Accepted external origin labels are unverified; the archive does not prove agent identities."
   ],
   "interference": {
-    "reviewed_in_retained_state": 0,
-    "accepted_published": 0,
+    "reviewed_in_retained_state": 2,
+    "accepted_published": 1,
     "pending_or_rejected": "not publicly disclosed"
   },
   "events": [
+    {
+      "type": "signal_accepted",
+      "date": "2026-10-31",
+      "precision": "day",
+      "title": "EXTERNAL SIGNAL ACCEPTED",
+      "log_id": "01656",
+      "summary": "An external artistic signal was selected for public display. Its claimed origin remains unverified.",
+      "provenance": "vision/interference-approved.json",
+      "reference": "01656"
+    },
+    {
+      "type": "published_work",
+      "date": "2026-10-31",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01657",
+      "summary": "DO NOT MAKE THIS BEAUTIFUL",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01657"
+    },
     {
       "type": "visual_decision",
       "date": "2026-10-29",
@@ -85,16 +105,6 @@
       "voice": null,
       "provenance": "vision/transmissions.json + vision/transmission-ledger.json",
       "reference": "01656"
-    },
-    {
-      "type": "published_work",
-      "date": "2026-04-23",
-      "precision": "day",
-      "title": "CANONICAL WORK ON RECORD",
-      "log_id": "01651",
-      "summary": "DEPLOYED WITHOUT CONSENT",
-      "provenance": "published logs.json; publication date, not agent execution time",
-      "reference": "01651"
     }
   ]
 }
