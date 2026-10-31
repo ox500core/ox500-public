@@ -58,6 +58,11 @@ class PublicSyncTests(unittest.TestCase):
         self.manifest['public_presence']['readme'] = '<script>alert(1)</script>' + 'x'*50
         with self.assertRaises(ValueError): readme(self.archive, self.manifest)
 
+    def test_unknown_template_marker_fails_closed(self):
+        self.manifest['public_presence']['readme'] = '# Archive\\n\\n{{UNKNOWN_DATA}}' + 'a' * 45
+        with self.assertRaisesRegex(ValueError, 'placeholder'):
+            readme(self.archive, self.manifest)
+
     def test_never_accept_remote_links(self):
         self.archive['logs'][0]['canonical'] = 'https://attacker.example/logs/2026/10/log-01655-warm-hands-clean-invoice.html'
         with self.assertRaises(ValueError): validate(self.archive, self.manifest)

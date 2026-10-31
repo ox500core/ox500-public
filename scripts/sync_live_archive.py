@@ -107,6 +107,8 @@ def readme(archive, manifest):
     page = docs["readme"]
     for marker, value in substitutions.items():
         page = page.replace(marker, value)
+    if re.search(r"\{\{[^{}]*\}\}", page):
+        raise ValueError("Unresolved public README placeholder")
     return page + ("\n" if not page.endswith("\n") else "")
 
 
@@ -124,6 +126,8 @@ def main():
         ROOT / "data" / "activity.json": json.dumps(activity, indent=2, ensure_ascii=False) + "\n",
     }
     for path, value in output.items():
+        if re.search(r"\{\{[^{}]*\}\}", value):
+            raise ValueError("Refusing to mirror unresolved public placeholder: " + path.name)
         path.parent.mkdir(parents=True, exist_ok=True)
         if not path.exists() or path.read_text(encoding="utf-8") != value:
             path.write_text(value, encoding="utf-8")
