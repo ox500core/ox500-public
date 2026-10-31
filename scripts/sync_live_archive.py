@@ -87,6 +87,7 @@ def readme(archive, manifest):
     if not hero:
         hero = safe_text(latest["title"])
     medium = safe_text(archive.get("current_medium") or "procedural SVG", 70)
+    # Published production manifest is authoritative; never copy stale local prose.
     identity = manifest.get("public_identity", {})
     if not isinstance(identity, dict):
         raise ValueError("Missing public identity")
