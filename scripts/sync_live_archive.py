@@ -80,100 +80,33 @@ def validate(archive, manifest):
 
 
 def readme(archive, manifest):
+    """Preserve the autonomous author's Markdown; substitute only optional live data."""
+    docs = manifest.get("public_presence")
+    if (not isinstance(docs, dict) or set(docs) != {"schema_version", "summary", "llms", "readme"}
+            or docs.get("schema_version") != 1):
+        raise ValueError("No autonomous public documents published yet")
+    for key, limit in (("summary", 650), ("llms", 12000), ("readme", 16000)):
+        val = docs[key]
+        if not isinstance(val, str) or not 40 <= len(val.strip()) <= limit or re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", val):
+            raise ValueError("Unsafe autonomous public document")
+        if re.search(r"<[^>]+>", val):
+            raise ValueError("HTML in public document")
+        if re.search(r"(?i)javascript:|data:|sk-[A-Za-z0-9_-]{12,}|OPENAI_API_KEY|Authorization:", val):
+            raise ValueError("Secret or executable public document content")
+    governance = manifest.get("identity_governance", {})
+    if governance.get("review_cadence") != "quarterly" or governance.get("agent_positions") != 5:
+        raise ValueError("Unexpected public author configuration")
     logs = sorted(archive["logs"], key=lambda x: (x["date"], x["id"]), reverse=True)
-    latest = logs[0]
-    stage = archive["current_stage"]
-    hero = " / ".join(safe_text(s, 90) for s in stage.get("hero_lines", [])[:5])
-    if not hero:
-        hero = safe_text(latest["title"])
-    medium = safe_text(archive.get("current_medium") or "procedural SVG", 70)
-    # Published production manifest is authoritative; never copy stale local prose.
-    identity = manifest.get("public_identity", {})
-    if not isinstance(identity, dict):
-        raise ValueError("Missing public identity")
-    descriptions = [
-        identity.get(key, "") for key in (
-            "overview", "editorial", "creative_boundary", "preservation",
-            "interface", "interaction", "accountability"
-        )
-    ]
-    if not all(isinstance(item, str) and 40 <= len(item) <= 650 for item in descriptions):
-        raise ValueError("Invalid public factual identity")
-
-    voice = manifest.get("creative_identity", {})
-    voice_keys = ("tagline", "manifesto", "stance", "creative_direction", "ownership")
-    if (not isinstance(voice, dict) or set(voice) != set(voice_keys) | {"schema_version"}
-            or voice.get("schema_version") != 1
-            or not all(isinstance(voice.get(k), str) and 20 <= len(voice[k]) <= 650 for k in voice_keys)):
-        raise ValueError("Missing Sol-owned creative identity; refusing a factual-only public face")
-    governance = manifest.get("voice_governance", {})
-    if (governance.get("creative_owner") != "Sol" or governance.get("factual_auditor") != "Luna"
-            or governance.get("audit_cadence") != "quarterly" or governance.get("agent_positions") != 5):
-        raise ValueError("Invalid creative/factual ownership boundary")
-
-    lines = [
-        "# OX500 // SIGNAL ARCHIVE",
-        "",
-        "![Current OX500 signal artwork](https://ox500.com/vision/signals/hero.svg)",
-        "",
-        f"> **{hero}**",
-        "",
-        safe_text(voice["tagline"], 650),
-        "",
-        safe_text(voice["manifesto"], 650),
-        "",
-        safe_text(voice["stance"], 650),
-        "",
-        f"**Published transmissions:** {len(logs)}  ·  **Current visual medium:** {medium}  ·  **Latest release:** {safe_text(latest['date'])}",
-        "",
-        f"**Latest: [{safe_text(latest['id'])} // {safe_text(latest['title'])}]({latest['canonical']})**",
-        "",
-        safe_text(latest.get("excerpt", ""), 300),
-        "",
-        "## The living archive",
-        "",
-        "- [Experience OX500](https://ox500.com/)",
-        "- [Explore all published transmissions](https://ox500.com/#index)",
-        "- [External interference / transmit a signal](https://ox500.com/interference/)",
-        "- [Machine-readable public archive](data/archive.json)",
-        "- [Public agent manifest](data/agent-manifest.json)",
-        "- [Machine Activity / verified decisions](https://ox500.com/activity/)",
-        "- [Machine Activity JSON mirror](data/activity.json)",
-        "- [Live archive JSON](https://ox500.com/vision/archive.json)",
-        "",
-        "## Recent transmissions",
-        "",
-    ]
-    for item in logs[:8]:
-        lines.append(f"- `{item['id']}` · {safe_text(item['date'])} · **[{safe_text(item['title'])}]({item['canonical']})**")
-    lines += [
-        "",
-        "## Behind the noise",
-        "",
-        *[safe_text(item, 650) for item in descriptions],
-        "",
-        safe_text(voice["ownership"], 650),
-        "",
-        "## Repository boundary",
-        "",
-        "This is the **public-facing OX500 repository**, not the private live publishing source.",
-        "Historical `logs.json`, `build.py` and HTML templates in this repository are an **older public snapshot**. Do not mistake them for the active production pipeline.",
-        "The files in `data/` and this README are refreshed from **already published** ox500.com machine endpoints. No unpublished material, music-production cues, credentials or private operational state is copied.",
-        "",
-        "The original published works retain their IDs and permanent URLs. The public archive data is a mirror, not a new source of truth.",
-        "",
-        "## External nodes",
-        "",
-        "- [OX500.com](https://ox500.com/)",
-        "- [YouTube](https://www.youtube.com/@ox500core)",
-        "- [Bandcamp](https://ox500.bandcamp.com)",
-        "",
-        "---",
-        "",
-        "*This public front page is synchronized automatically from published OX500 signals. Last content is determined by the canonical site, not by this repository's commit history.*",
-        "",
-    ]
-    return "\n".join(lines)
+    recent = "\n".join(f"- `{x['id']}` · {safe_text(x['date'])} · [{safe_text(x['title'])}]({x['canonical']})" for x in logs[:8])
+    substitutions = {
+        "{{RECENT_TRANSMISSIONS}}": recent,
+        "{{CURRENT_ARTWORK}}": "![Current archive artwork](https://ox500.com/vision/signals/hero.svg)",
+        "{{ARCHIVE_STATS}}": f"{len(logs)} published · {safe_text(logs[0]['date'])} · {safe_text(archive.get('current_medium', ''))}",
+    }
+    page = docs["readme"]
+    for marker, value in substitutions.items():
+        page = page.replace(marker, value)
+    return page + ("\n" if not page.endswith("\n") else "")
 
 
 def main():
