@@ -44,6 +44,12 @@ class PublicSyncTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             readme(self.archive, self.manifest)
 
+    def test_authored_discovery_fields_are_mirrored_without_rewriting_readme(self):
+        before = readme(self.archive, self.manifest)
+        self.manifest['public_presence']['agent_manifest'] = {'a_chosen_field': ['Own voice', 'Own structure']}
+        self.manifest['public_presence']['reader_skill'] = 'A reader-skill description selected by the archive author.'
+        self.assertEqual(readme(self.archive, self.manifest), before)
+
     def test_missing_autonomous_document_fails_closed(self):
         del self.manifest['public_presence']
         with self.assertRaises(ValueError): readme(self.archive, self.manifest)
