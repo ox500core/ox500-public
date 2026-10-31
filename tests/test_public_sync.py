@@ -39,6 +39,11 @@ class PublicSyncTests(unittest.TestCase):
         self.manifest['public_presence']['readme'] = '# A new identity\n\nThe author can change the entire public description on a later review.'
         self.assertTrue(readme(self.archive, self.manifest).startswith('# A new identity'))
 
+    def test_private_provenance_is_not_part_of_public_documents(self):
+        self.manifest['public_presence']['response_id'] = 'private-ledger-only'
+        with self.assertRaises(ValueError):
+            readme(self.archive, self.manifest)
+
     def test_missing_autonomous_document_fails_closed(self):
         del self.manifest['public_presence']
         with self.assertRaises(ValueError): readme(self.archive, self.manifest)
