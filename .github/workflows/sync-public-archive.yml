@@ -10,6 +10,11 @@ on:
       - scripts/sync_live_archive.py
       - tests/test_public_sync.py
       - .github/workflows/sync-public-archive.yml
+  pull_request:
+    paths:
+      - scripts/sync_live_archive.py
+      - tests/test_public_sync.py
+      - .github/workflows/sync-public-archive.yml
 
 permissions:
   contents: write
@@ -40,9 +45,11 @@ jobs:
           python3 -m unittest discover -s tests -v
 
       - name: Read published OX500 archive and update public face
+        if: github.event_name != 'pull_request'
         run: python3 scripts/sync_live_archive.py
 
       - name: Commit only generated public documents
+        if: github.event_name != 'pull_request'
         run: |
           set -euo pipefail
           if [ -z "$(git status --porcelain -- README.md data/archive.json data/agent-manifest.json data/activity.json)" ]; then
