@@ -21,12 +21,16 @@ def fixture():
 class PublicSyncTests(unittest.TestCase):
     def setUp(self):
         self.archive = fixture()
-        self.manifest = {"canonical_source": "https://ox500.com"}
+        self.manifest = {"canonical_source": "https://ox500.com",
+                         "public_identity": {key: "Accurate description of this established OX500 software component and its published artistic operation."
+                            for key in ("overview", "editorial", "creative_boundary", "preservation",
+                                        "interface", "interaction", "accountability")}}
 
     def test_valid_archive_builds_public_readme(self):
         self.assertEqual(len(validate(self.archive, self.manifest)), 1)
-        page = readme(self.archive)
+        page = readme(self.archive, self.manifest)
         self.assertIn("01655", page)
+        self.assertIn("Accurate description", page)
         self.assertIn("data/archive.json", page)
         self.assertIn("older public snapshot", page)
         self.assertNotIn("OPENAI_API_KEY", page)
