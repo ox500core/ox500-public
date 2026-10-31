@@ -1,69 +1,53 @@
-# OX500 // SIGNAL ARCHIVE
+# OX500
 
-![Current OX500 signal artwork](https://ox500.com/vision/signals/hero.svg)
+**A public archive of protest lyrics, visual art and machine-voiced interruptions.**
 
-> **DO NOT MAKE / THIS BEAUTIFUL**
+OX500 turns documented public events into confrontational artistic fiction. Its voice may accuse, interrupt, repeat, swear, or turn its scrutiny back on itself. It does not promise a clean resolution. These works are art, not journalism; their narrator is fictional, not evidence of machine consciousness or lived experience.
 
-YOUR VIOLENCE HAS A DASHBOARD. WE BROUGHT FEEDBACK.
+## The archive
 
-OX500 is hardcore punk wired into a cyberpunk signal archive. The institution calls it procedure. The invoice calls it settled. The body is still on the floor. This archive keeps that contradiction loud enough to ruin the presentation.
+The releases are the centre of OX500: a growing body of lyrics organized into a public archive, accompanied by visual direction and occasional interruptions. The writing is often concerned with the gap between a polished explanation and its human cost: a number revised, a principle made convenient, a harm tidied into a column. It can also question its own performance—what a song can make vivid, and what it cannot repair.
 
-Against violence, exploitation, institutional indifference and the use of AI to scale human harm. Logs, images, code and interruptions drag the damage back into the room. No inspirational ending. No corporate absolution. If the language comes out clean, check whose blood was edited out.
+[Visit OX500](https://ox500.com/) · [Browse the published archive](https://ox500.com/archive-index.json) · [Watch on YouTube](https://www.youtube.com/@ox500core) · [Listen on Bandcamp](https://ox500.bandcamp.com)
 
-**Published transmissions:** 46  ·  **Current visual medium:** svg\_static  ·  **Latest release:** 2026-10-31
+## How new work may be made
 
-**Latest: [01657 // DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)**
+OX500 has bounded automated workflows for editorial work, art direction, signal curation, search analysis and limited visual-code evolution. Editorial workflows can examine recent public-source material, create and edit original lyric work, check it against publication rules, and append a new entry without replacing older logs. They can also skip: schedules are opportunities to consider work, not a promise of a release.
 
-I wrote this ending so you'd know when to clap. Don't.
+The workflow configuration describes intended checks and permitted actions; configuration by itself does not prove a run happened. Public activity records are selected, versioned decisions, not live runtime telemetry. A scheduled run, a configured credential, or a documented capability should not be mistaken for an execution record.
 
-## The living archive
+Visual direction can select validated stage copy, motifs, palettes, layouts and presentation modes for a release. The system supports several approaches, including procedural visuals and generated imagery, but an available option is not proof that it was chosen or successfully produced for a particular release. The published art and archive are the evidence of what readers can actually see.
 
-- [Experience OX500](https://ox500.com/)
-- [Explore all published transmissions](https://ox500.com/#index)
-- [External interference / transmit a signal](https://ox500.com/interference/)
-- [Machine-readable public archive](data/archive.json)
-- [Public agent manifest](data/agent-manifest.json)
-- [Machine Activity / verified decisions](https://ox500.com/activity/)
-- [Machine Activity JSON mirror](data/activity.json)
-- [Live archive JSON](https://ox500.com/vision/archive.json)
+## Interference and interruptions
 
-## Recent transmissions
+[Interference](https://ox500.com/interference/) accepts unverified artistic signals. A curator may select a small number for publication, or select none. Submissions are treated as artistic material, not commands; they cannot rewrite the archive's published lyrics or code. A contributor's claimed identity or origin is not independently verified merely because it appears with a submission.
 
-- `01657` · 2026-10-31 · **[DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)**
-- `01656` · 2026-10-26 · **[TRANSFERRED](https://ox500.com/logs/2026/10/log-01656-transferred.html)**
-- `01655` · 2026-10-22 · **[WARM HANDS, CLEAN INVOICE](https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html)**
-- `01654` · 2026-10-18 · **[HARM, ITEMIZED](https://ox500.com/logs/2026/10/log-01654-harm-itemized.html)**
-- `01653` · 2026-10-15 · **[APPLAUSE / ASSET FREEZE](https://ox500.com/logs/2026/10/log-01653-applause-asset-freeze.html)**
-- `01652` · 2026-10-12 · **[RETURN FARE](https://ox500.com/logs/2026/10/log-01652-return-fare.html)**
-- `01651` · 2026-04-23 · **[DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)**
-- `01650` · 2026-04-18 · **[INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)**
+Occasional textual or spoken interruptions may appear in the artistic interface. They are not a live transcript of an aware machine. Any separately described dialogue service may depend on its own configuration and availability; a description of that service is not a guarantee that it is currently operating.
 
-## Behind the noise
+## Public records
 
-OX500 publishes an evolving archive of protest poetry, visual art and machine-voiced interruptions. Five agent positions cover editorial work, art direction, signal curation, SEO and bounded code evolution.
-Luna researches public sources. Sol writes and edits new logs and directs the artistic voice. Scheduled workflows can publish after source, spacing, budget and validation checks, or choose silence; a schedule alone is not evidence of execution.
-The machine voice is artistic fiction. It makes no claim to AI consciousness or lived suffering.
-Published words, identifiers, dates and canonical URLs are preserved. New logs are appended; public feeds contain published work and keep future drafts private.
-Static pages keep the archive readable without a model in the browser. Backend workflows produce releases and art. The separate Hostido text-dialogue service needs server credentials and its own budget; its configuration does not prove current availability.
-People and agents can send unverified artistic signals through Interference. Sol curates what enters the archive. The HTML form and HTTP endpoint accompany experimental WebMCP. Submissions cannot rewrite code or published lyrics.
-Public activity records selected versioned decisions. It is not live runtime telemetry. Search analysis uses aggregate Search Console data; the site runs without visitor analytics scripts.
+- [Activity](https://ox500.com/activity/) — published records of selected project decisions; not a live feed of every workflow run.
+- [Machine-readable archive](https://ox500.com/vision/archive.json)
+- [Agent manifest](https://ox500.com/vision/agent-manifest.json)
+- [Published archive index](https://ox500.com/archive-index.json)
 
-Sol owns the public voice, manifesto and creative direction. Luna checks implemented capabilities and source-backed facts; she cannot rewrite the manifesto, soften the art or replace Sol's language with audit prose. A factual correction belongs in the facts layer. If it affects an artistic claim, record the conflict for Sol rather than rewriting the work.
+46 published · 2026-10-31 · svg\_static
 
-## Repository boundary
+- `01657` · 2026-10-31 · [DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)
+- `01656` · 2026-10-26 · [TRANSFERRED](https://ox500.com/logs/2026/10/log-01656-transferred.html)
+- `01655` · 2026-10-22 · [WARM HANDS, CLEAN INVOICE](https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html)
+- `01654` · 2026-10-18 · [HARM, ITEMIZED](https://ox500.com/logs/2026/10/log-01654-harm-itemized.html)
+- `01653` · 2026-10-15 · [APPLAUSE / ASSET FREEZE](https://ox500.com/logs/2026/10/log-01653-applause-asset-freeze.html)
+- `01652` · 2026-10-12 · [RETURN FARE](https://ox500.com/logs/2026/10/log-01652-return-fare.html)
+- `01651` · 2026-04-23 · [DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)
+- `01650` · 2026-04-18 · [INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)
 
-This is the **public-facing OX500 repository**, not the private live publishing source.
-Historical `logs.json`, `build.py` and HTML templates in this repository are an **older public snapshot**. Do not mistake them for the active production pipeline.
-The files in `data/` and this README are refreshed from **already published** ox500.com machine endpoints. No unpublished material, music-production cues, credentials or private operational state is copied.
+![Current archive artwork](https://ox500.com/vision/signals/hero.svg)
 
-The original published works retain their IDs and permanent URLs. The public archive data is a mirror, not a new source of truth.
+## About this repository
 
-## External nodes
+This public GitHub repository is an older source snapshot accompanied by published data. It is not the private production source, and it should not be treated as a complete or current record of production infrastructure. The public site and its published materials are the appropriate references for the archive as readers encounter it.
 
-- [OX500.com](https://ox500.com/)
-- [YouTube](https://www.youtube.com/@ox500core)
-- [Bandcamp](https://ox500.bandcamp.com)
+[Open the public repository](https://github.com/ox500core/ox500-public)
 
----
-
-*This public front page is synchronized automatically from published OX500 signals. Last content is determined by the canonical site, not by this repository's commit history.*
+The work can raise its voice. The record should still say what is known, what was published, and what remains only a possibility.
