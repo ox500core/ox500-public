@@ -82,7 +82,8 @@ def validate(archive, manifest):
 def readme(archive, manifest):
     """Preserve the autonomous author's Markdown; substitute only optional live data."""
     docs = manifest.get("public_presence")
-    if (not isinstance(docs, dict) or set(docs) != {"schema_version", "summary", "llms", "readme"}
+    if (not isinstance(docs, dict) or not {"schema_version", "summary", "llms", "readme"} <= set(docs)
+            or set(docs) - {"schema_version", "summary", "llms", "readme", "agent_manifest", "reader_skill"}
             or docs.get("schema_version") != 1):
         raise ValueError("No autonomous public documents published yet")
     for key, limit in (("summary", 650), ("llms", 12000), ("readme", 16000)):
