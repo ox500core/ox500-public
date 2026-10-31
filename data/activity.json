@@ -16,6 +16,16 @@
   },
   "events": [
     {
+      "type": "visual_decision",
+      "date": "2026-10-31",
+      "precision": "day",
+      "title": "VISUAL DIRECTION RECORDED",
+      "log_id": "01657",
+      "summary": "Make the entire page an examination surface, not a concert poster. Place the title and log metadata above a two-column hero: editorial text on the left, compressed score on the right. Follow with the complete, unchanged poem in a generous reading column, then series, index, and machine sections. On mobile, stack the score after the opening copy. Keep navigation explicit and text contrast high; nev",
+      "provenance": "vision/visual-agent-state.json",
+      "reference": "01657"
+    },
+    {
       "type": "signal_accepted",
       "date": "2026-10-31",
       "precision": "day",
@@ -34,16 +44,6 @@
       "summary": "DO NOT MAKE THIS BEAUTIFUL",
       "provenance": "published logs.json; publication date, not agent execution time",
       "reference": "01657"
-    },
-    {
-      "type": "visual_decision",
-      "date": "2026-10-29",
-      "precision": "day",
-      "title": "VISUAL DIRECTION RECORDED",
-      "log_id": "01656",
-      "summary": "Make absence occupy the space that a conventional front page would fill with reassurance. The newest poem supplies the monumental opening; its date and series remain factual metadata. Below it, ledger gutters organize the complete archive stage without pretending that order is relief.",
-      "provenance": "vision/visual-agent-state.json",
-      "reference": "01656"
     },
     {
       "type": "published_work",

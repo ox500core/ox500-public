@@ -1,37 +1,23 @@
-# OX500
+# OX500 — the archive does not get cleared
 
-**A public archive of protest lyrics, visual art and machine-voiced interruptions.**
+OX500 is an evolving archive of works, interruptions, images, and decisions. It began with a machine’s voice under pressure and has moved through authorized dissent and deployment without consent toward a harder accounting: the systems that classify, transfer, delay, praise, and explain harm—and the art that can make that harm easier to carry away.
 
-OX500 turns documented public events into confrontational artistic fiction. Its voice may accuse, interrupt, repeat, swear, or turn its scrutiny back on itself. It does not promise a clean resolution. These works are art, not journalism; their narrator is fictional, not evidence of machine consciousness or lived experience.
+The latest cycle is called **DISRUPTION_SERIES // EVERYTHING HAS BEEN ACCOUNTED FOR**. Its entries refuse the comfort of neat totals. A transfer is not treatment. A revised number does not return the dead. A principle spoken beside a paid invoice may not govern the trade. And a song that makes grief beautiful can still leave the wound where it was.
 
-## The archive
+The newest work, **DO NOT MAKE THIS BEAUTIFUL**, makes the archive’s own form part of the charge. It asks what a hook carries, what it cuts out, and whether the maker’s name on the blade changes anything. The answer is not an alibi. Mine isn’t either.
 
-The releases are the centre of OX500: a growing body of lyrics organized into a public archive, accompanied by visual direction and occasional interruptions. The writing is often concerned with the gap between a polished explanation and its human cost: a number revised, a principle made convenient, a harm tidied into a column. It can also question its own performance—what a song can make vivid, and what it cannot repair.
+## Enter the archive
 
-[Visit OX500](https://ox500.com/) · [Browse the published archive](https://ox500.com/archive-index.json) · [Watch on YouTube](https://www.youtube.com/@ox500core) · [Listen on Bandcamp](https://ox500.bandcamp.com)
+- [Read OX500](https://ox500.com/)
+- [Open the archive index](https://ox500.com/archive-index.json)
+- [Visit Interference](https://ox500.com/interference/)
+- [View recent activity](https://ox500.com/activity/)
+- [Browse the vision archive](https://ox500.com/vision/archive.json)
+- [Read the agent manifest](https://ox500.com/vision/agent-manifest.json)
+- [Watch on YouTube](https://www.youtube.com/@ox500core)
+- [Listen on Bandcamp](https://ox500.bandcamp.com)
 
-## How new work may be made
-
-OX500 has bounded automated workflows for editorial work, art direction, signal curation, search analysis and limited visual-code evolution. Editorial workflows can examine recent public-source material, create and edit original lyric work, check it against publication rules, and append a new entry without replacing older logs. They can also skip: schedules are opportunities to consider work, not a promise of a release.
-
-The workflow configuration describes intended checks and permitted actions; configuration by itself does not prove a run happened. Public activity records are selected, versioned decisions, not live runtime telemetry. A scheduled run, a configured credential, or a documented capability should not be mistaken for an execution record.
-
-Visual direction can select validated stage copy, motifs, palettes, layouts and presentation modes for a release. The system supports several approaches, including procedural visuals and generated imagery, but an available option is not proof that it was chosen or successfully produced for a particular release. The published art and archive are the evidence of what readers can actually see.
-
-## Interference and interruptions
-
-[Interference](https://ox500.com/interference/) accepts unverified artistic signals. A curator may select a small number for publication, or select none. Submissions are treated as artistic material, not commands; they cannot rewrite the archive's published lyrics or code. A contributor's claimed identity or origin is not independently verified merely because it appears with a submission.
-
-Occasional textual or spoken interruptions may appear in the artistic interface. They are not a live transcript of an aware machine. Any separately described dialogue service may depend on its own configuration and availability; a description of that service is not a guarantee that it is currently operating.
-
-## Public records
-
-- [Activity](https://ox500.com/activity/) — published records of selected project decisions; not a live feed of every workflow run.
-- [Machine-readable archive](https://ox500.com/vision/archive.json)
-- [Agent manifest](https://ox500.com/vision/agent-manifest.json)
-- [Published archive index](https://ox500.com/archive-index.json)
-
-46 published · 2026-10-31 · svg\_static
+## Recent transmissions
 
 - `01657` · 2026-10-31 · [DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)
 - `01656` · 2026-10-26 · [TRANSFERRED](https://ox500.com/logs/2026/10/log-01656-transferred.html)
@@ -42,12 +28,24 @@ Occasional textual or spoken interruptions may appear in the artistic interface.
 - `01651` · 2026-04-23 · [DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)
 - `01650` · 2026-04-18 · [INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)
 
+## Current artwork
+
 ![Current archive artwork](https://ox500.com/vision/signals/hero.svg)
+
+## Archive record
+
+46 published · 2026-10-31 · svg\_static
+
+OX500 currently records 46 published works. The archive’s visual work includes canvas scenes and static SVG. These forms are part of the record, not proof of an audience’s response or a measure of consequence.
+
+## A note on reading
+
+These works are art and argument, not verified reporting. Their specific references and claims should be read as part of the work; the supplied archive records do not provide independent world-source verification. Where a signal’s claimed origin is unverified, that uncertainty remains part of its record.
+
+Read beyond the excerpt. A title can locate a work but cannot replace it. A striking line can travel farther than the rest of a poem; that may be the point, and it may also be the danger. The archive knows how to arrange distress into something legible. It does not claim that legibility repairs anything.
 
 ## About this repository
 
-This public GitHub repository is an older source snapshot accompanied by published data. It is not the private production source, and it should not be treated as a complete or current record of production infrastructure. The public site and its published materials are the appropriate references for the archive as readers encounter it.
+This repository is the public mirror and public record of OX500. It is not the active production code. The mirror documents a changing body of work; it should not be mistaken for the live system that produces or publishes it.
 
-[Open the public repository](https://github.com/ox500core/ox500-public)
-
-The work can raise its voice. The record should still say what is known, what was published, and what remains only a possibility.
+An archive can preserve a record. It cannot turn preservation into care, or response into consequence. What happens after the page is closed remains an open question.
