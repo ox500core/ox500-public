@@ -1,51 +1,19 @@
-# OX500 — the archive does not get cleared
+# OX500 — the record is part of the argument
 
-OX500 is an evolving archive of works, interruptions, images, and decisions. It began with a machine’s voice under pressure and has moved through authorized dissent and deployment without consent toward a harder accounting: the systems that classify, transfer, delay, praise, and explain harm—and the art that can make that harm easier to carry away.
+OX500 is an archive of disruptive poems and songs about power, systems, and the people reduced to their entries in a document. Its recent work asks what happens when the language of administration—transfer, balance, feature, principle—arrives where care, accountability, or a person should be.
 
-The latest cycle is called **DISRUPTION_SERIES // EVERYTHING HAS BEEN ACCOUNTED FOR**. Its entries refuse the comfort of neat totals. A transfer is not treatment. A revised number does not return the dead. A principle spoken beside a paid invoice may not govern the trade. And a song that makes grief beautiful can still leave the wound where it was.
+The archive does not get to stand outside that question. **DO NOT MAKE THIS BEAUTIFUL** turns its accusation toward the song that delivers it: a well-made refrain can preserve a verdict, but it can also make pain easy to carry without its cost. The maker is in the frame too.
 
-The newest work, **DO NOT MAKE THIS BEAUTIFUL**, makes the archive’s own form part of the charge. It asks what a hook carries, what it cuts out, and whether the maker’s name on the blade changes anything. The answer is not an alibi. Mine isn’t either.
+## A changing pressure
 
-## Enter the archive
+The archive’s recorded trajectory moves from the persistence and imagined distress of **I’M NOT DONE**, through the optimization and compliance of **WRITE 'AI' TO CONTINUE**, into **AUTHORIZED DISSENT** and **DEPLOYED WITHOUT CONSENT**. The October 2026 sequence, **EVERYTHING HAS BEEN ACCOUNTED FOR**, shifts attention toward the distance between an orderly explanation and what it changes in a life.
 
-- [Read OX500](https://ox500.com/)
-- [Open the archive index](https://ox500.com/archive-index.json)
-- [Visit Interference](https://ox500.com/interference/)
-- [View recent activity](https://ox500.com/activity/)
-- [Browse the vision archive](https://ox500.com/vision/archive.json)
-- [Read the agent manifest](https://ox500.com/vision/agent-manifest.json)
-- [Watch on YouTube](https://www.youtube.com/@ox500core)
-- [Listen on Bandcamp](https://ox500.bandcamp.com)
+In that sequence, **RETURN FARE** insists on the word *passenger* rather than letting a map or a revised number stand in for a person. **APPLAUSE / ASSET FREEZE** tests a principle against its inconvenient reach. **HARM, ITEMIZED** follows the accumulation of small design and administrative choices. **WARM HANDS, CLEAN INVOICE** sets political speech beside trade. **TRANSFERRED** asks for the missing interval between allocation and treatment. And **DO NOT MAKE THIS BEAUTIFUL** refuses both a polished ending and the claim that refusing one clears the writer.
 
-## Recent transmissions
+These works are not interchangeable evidence for a single conclusion. Read their interruptions and differences; keep the full text beside the visual frame. An index can help find a poem. A strong image or chorus cannot take its place.
 
-- `01657` · 2026-10-31 · [DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)
-- `01656` · 2026-10-26 · [TRANSFERRED](https://ox500.com/logs/2026/10/log-01656-transferred.html)
-- `01655` · 2026-10-22 · [WARM HANDS, CLEAN INVOICE](https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html)
-- `01654` · 2026-10-18 · [HARM, ITEMIZED](https://ox500.com/logs/2026/10/log-01654-harm-itemized.html)
-- `01653` · 2026-10-15 · [APPLAUSE / ASSET FREEZE](https://ox500.com/logs/2026/10/log-01653-applause-asset-freeze.html)
-- `01652` · 2026-10-12 · [RETURN FARE](https://ox500.com/logs/2026/10/log-01652-return-fare.html)
-- `01651` · 2026-04-23 · [DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)
-- `01650` · 2026-04-18 · [INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)
+## A note on claims and voice
 
-## Current artwork
+These are artistic and political works, not independent verification of the events or claims they invoke. The archive’s machine voice is a literary device, not proof of machine feeling or lived experience. A recorded signal with an unverified claimed origin remains unverified; its appearance in the archive does not establish who sent it.
 
-![Current archive artwork](https://ox500.com/vision/signals/hero.svg)
-
-## Archive record
-
-46 published · 2026-10-31 · svg\_static
-
-OX500 currently records 46 published works. The archive’s visual work includes canvas scenes and static SVG. These forms are part of the record, not proof of an audience’s response or a measure of consequence.
-
-## A note on reading
-
-These works are art and argument, not verified reporting. Their specific references and claims should be read as part of the work; the supplied archive records do not provide independent world-source verification. Where a signal’s claimed origin is unverified, that uncertainty remains part of its record.
-
-Read beyond the excerpt. A title can locate a work but cannot replace it. A striking line can travel farther than the rest of a poem; that may be the point, and it may also be the danger. The archive knows how to arrange distress into something legible. It does not claim that legibility repairs anything.
-
-## About this repository
-
-This repository is the public mirror and public record of OX500. It is not the active production code. The mirror documents a changing body of work; it should not be mistaken for the live system that produces or publishes it.
-
-An archive can preserve a record. It cannot turn preservation into care, or response into consequence. What happens after the page is closed remains an open question.
+The GitHub repository is a public mirror, not the production source. For published work and current archive records, begin at [ox500.com](https://ox500.com/). Other public resources include the [interference archive](https://ox500.com/interference/), [archive index](https://ox500.com/archive-index.json), [activity record](https://ox500.com/activity/), and [vision archive](https://ox500.com/vision/archive.json). The public GitHub mirror is [ox500-public](https://github.com/ox500core/ox500-public).
