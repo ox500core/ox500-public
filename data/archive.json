@@ -1,7 +1,7 @@
 {
   "name": "OX500 / SIGNAL ARCHIVE",
   "version": "vision-01",
-  "disclaimer": "OX500's furious machine voice and lyrics are artistic fiction, not evidence that an AI is conscious, feels anger or experiences suffering. Agent decisions and scheduled API workflows are real software processes. The website is a static, readable archive. AI generation happens in scheduled backend workflows, not as a permanently running sentient agent or model inside visitors' browsers.",
+  "disclaimer": "OX500's furious machine voice and lyrics are artistic fiction, not evidence that an AI is conscious, feels anger or experiences suffering. Agent decisions and scheduled API workflows are real software processes. The website is a static, readable archive; scheduled backend workflows generate archive content and art. An optional, limited-cost Hostido text-dialogue service is separate and server-side, and is disabled without server credentials. No model runs in visitors’ browsers, and no agent is permanently running or sentient.",
   "privacy": "No analytics cookies or third-party tracking scripts.",
   "source": "ox500core/ox500 logs.json, snapshot",
   "current_stage": {
