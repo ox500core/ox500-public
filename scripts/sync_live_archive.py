@@ -38,7 +38,7 @@ def safe_text(value, limit=220):
     """User-facing Markdown only; avoid accidental HTML or link injection."""
     val = re.sub(r"[\x00-\x1f\x7f]+", " ", str(value or ""))
     val = val.replace("<", "‹").replace(">", "›")
-    for ch in "\`*_[]|":
+    for ch in r"\`*_[]|":
         val = val.replace(ch, "\\" + ch)
     return val.strip()[:limit]
 
@@ -98,7 +98,18 @@ def readme(archive, manifest):
         )
     ]
     if not all(isinstance(item, str) and 40 <= len(item) <= 650 for item in descriptions):
-        raise ValueError("Invalid Luna-controlled public identity")
+        raise ValueError("Invalid public factual identity")
+
+    voice = manifest.get("creative_identity", {})
+    voice_keys = ("tagline", "manifesto", "stance", "creative_direction", "ownership")
+    if (not isinstance(voice, dict) or set(voice) != set(voice_keys) | {"schema_version"}
+            or voice.get("schema_version") != 1
+            or not all(isinstance(voice.get(k), str) and 20 <= len(voice[k]) <= 650 for k in voice_keys)):
+        raise ValueError("Missing Sol-owned creative identity; refusing a factual-only public face")
+    governance = manifest.get("voice_governance", {})
+    if (governance.get("creative_owner") != "Sol" or governance.get("factual_auditor") != "Luna"
+            or governance.get("audit_cadence") != "quarterly" or governance.get("agent_positions") != 5):
+        raise ValueError("Invalid creative/factual ownership boundary")
 
     lines = [
         "# OX500 // SIGNAL ARCHIVE",
@@ -107,7 +118,11 @@ def readme(archive, manifest):
         "",
         f"> **{hero}**",
         "",
-        *[safe_text(item, 650) for item in descriptions[:4]],
+        safe_text(voice["tagline"], 650),
+        "",
+        safe_text(voice["manifesto"], 650),
+        "",
+        safe_text(voice["stance"], 650),
         "",
         f"**Published transmissions:** {len(logs)}  ·  **Current visual medium:** {medium}  ·  **Latest release:** {safe_text(latest['date'])}",
         "",
@@ -116,8 +131,6 @@ def readme(archive, manifest):
         safe_text(latest.get("excerpt", ""), 300),
         "",
         "## The living archive",
-        "",
-        *[safe_text(item, 650) for item in descriptions[4:]],
         "",
         "- [Experience OX500](https://ox500.com/)",
         "- [Explore all published transmissions](https://ox500.com/#index)",
@@ -134,6 +147,12 @@ def readme(archive, manifest):
     for item in logs[:8]:
         lines.append(f"- `{item['id']}` · {safe_text(item['date'])} · **[{safe_text(item['title'])}]({item['canonical']})**")
     lines += [
+        "",
+        "## Behind the noise",
+        "",
+        *[safe_text(item, 650) for item in descriptions],
+        "",
+        safe_text(voice["ownership"], 650),
         "",
         "## Repository boundary",
         "",
