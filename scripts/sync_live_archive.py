@@ -87,8 +87,10 @@ def readme(archive, manifest):
         raise ValueError("No autonomous public documents published yet")
     for key, limit in (("summary", 650), ("llms", 12000), ("readme", 16000)):
         val = docs[key]
-        if not isinstance(val, str) or not 40 <= len(val.strip()) <= limit or re.search(r"[<>\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", val):
+        if not isinstance(val, str) or not 40 <= len(val.strip()) <= limit or re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", val):
             raise ValueError("Unsafe autonomous public document")
+        if re.search(r"<[^>]+>", val):
+            raise ValueError("HTML in public document")
         if re.search(r"(?i)javascript:|data:|sk-[A-Za-z0-9_-]{12,}|OPENAI_API_KEY|Authorization:", val):
             raise ValueError("Secret or executable public document content")
     governance = manifest.get("identity_governance", {})

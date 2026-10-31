@@ -30,6 +30,11 @@ class PublicSyncTests(unittest.TestCase):
         self.manifest['public_presence']['readme'] = text
         self.assertEqual(readme(self.archive, self.manifest), text)
 
+    def test_markdown_blockquote_is_preserved(self):
+        text = '# Author choice\n\n> A complete blockquote chosen freely by the author, without a template.\n'
+        self.manifest['public_presence']['readme'] = text
+        self.assertEqual(readme(self.archive, self.manifest), text)
+
     def test_revised_identity_is_allowed(self):
         self.manifest['public_presence']['readme'] = '# A new identity\n\nThe author can change the entire public description on a later review.'
         self.assertTrue(readme(self.archive, self.manifest).startswith('# A new identity'))
