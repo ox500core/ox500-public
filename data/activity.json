@@ -10,7 +10,7 @@
     "Accepted external origin labels are unverified; the archive does not prove agent identities."
   ],
   "interference": {
-    "reviewed_in_retained_state": 2,
+    "reviewed_in_retained_state": 3,
     "accepted_published": 1,
     "pending_or_rejected": "not publicly disclosed"
   },
