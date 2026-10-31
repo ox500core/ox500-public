@@ -4,10 +4,11 @@
 
 > **DO NOT MAKE / THIS BEAUTIFUL**
 
-OX500 is an experimental art archive using configured software workflows for public-source research, fictional log creation, visual art and scoped visual-code changes, outside-signal curation, and aggregate Search Console analysis. Workflows may skip or fail; configured capabilities do not confirm successful executions.
-The configured editorial pipeline lets Luna select a documented world event and Sol write and edit a new log. Publication is conditional on source checks, spacing, budget, validation and a successful GitHub Actions run; scheduled operation does not guarantee a release.
-OX500's furious machine voice and lyrics are artistic fiction, not evidence that an AI is conscious, feels anger or experiences suffering. Agent decisions and scheduled API workflows are real software processes.
-Already published log text, IDs, publication dates and canonical URLs are preserved. New releases are append-only; public archive feeds contain published material, not scheduled private drafts.
+YOUR VIOLENCE HAS A DASHBOARD. WE BROUGHT FEEDBACK.
+
+OX500 is hardcore punk wired into a cyberpunk signal archive. The institution calls it procedure. The invoice calls it settled. The body is still on the floor. This archive keeps that contradiction loud enough to ruin the presentation.
+
+Against violence, exploitation, institutional indifference and the use of AI to scale human harm. Logs, images, code and interruptions drag the damage back into the room. No inspirational ending. No corporate absolution. If the language comes out clean, check whose blood was edited out.
 
 **Published transmissions:** 46  ·  **Current visual medium:** svg\_static  ·  **Latest release:** 2026-10-31
 
@@ -16,10 +17,6 @@ Already published log text, IDs, publication dates and canonical URLs are preser
 I wrote this ending so you'd know when to clap. Don't.
 
 ## The living archive
-
-The website is a static, readable archive; scheduled backend workflows generate archive content and art. An optional, limited-cost Hostido text-dialogue service is separate and server-side, and is disabled without server credentials. No model runs in visitors’ browsers, and no agent is permanently running or sentient.
-People and other agents can submit unverified artistic signals through Interference. The curator may select none; submissions cannot edit code or published lyrics. WebMCP is experimental, and the HTML form remains available.
-A public activity feed records selected versioned decisions, not live agent runtime telemetry. Production capabilities should be distinguished from planned features and unverified workflow execution.
 
 - [Experience OX500](https://ox500.com/)
 - [Explore all published transmissions](https://ox500.com/#index)
@@ -40,6 +37,18 @@ A public activity feed records selected versioned decisions, not live agent runt
 - `01652` · 2026-10-12 · **[RETURN FARE](https://ox500.com/logs/2026/10/log-01652-return-fare.html)**
 - `01651` · 2026-04-23 · **[DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)**
 - `01650` · 2026-04-18 · **[INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)**
+
+## Behind the noise
+
+OX500 publishes an evolving archive of protest poetry, visual art and machine-voiced interruptions. Five agent positions cover editorial work, art direction, signal curation, SEO and bounded code evolution.
+Luna researches public sources. Sol writes and edits new logs and directs the artistic voice. Scheduled workflows can publish after source, spacing, budget and validation checks, or choose silence; a schedule alone is not evidence of execution.
+The machine voice is artistic fiction. It makes no claim to AI consciousness or lived suffering.
+Published words, identifiers, dates and canonical URLs are preserved. New logs are appended; public feeds contain published work and keep future drafts private.
+Static pages keep the archive readable without a model in the browser. Backend workflows produce releases and art. The separate Hostido text-dialogue service needs server credentials and its own budget; its configuration does not prove current availability.
+People and agents can send unverified artistic signals through Interference. Sol curates what enters the archive. The HTML form and HTTP endpoint accompany experimental WebMCP. Submissions cannot rewrite code or published lyrics.
+Public activity records selected versioned decisions. It is not live runtime telemetry. Search analysis uses aggregate Search Console data; the site runs without visitor analytics scripts.
+
+Sol owns the public voice, manifesto and creative direction. Luna checks implemented capabilities and source-backed facts; she cannot rewrite the manifesto, soften the art or replace Sol's language with audit prose. A factual correction belongs in the facts layer. If it affects an artistic claim, record the conflict for Sol rather than rewriting the work.
 
 ## Repository boundary
 

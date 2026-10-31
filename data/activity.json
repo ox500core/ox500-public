@@ -105,6 +105,17 @@
       "voice": null,
       "provenance": "vision/transmissions.json + vision/transmission-ledger.json",
       "reference": "01656"
+    },
+    {
+      "type": "transmission_decision",
+      "date": "2026-10",
+      "precision": "month",
+      "title": "VOICE SELECTED",
+      "log_id": "01657",
+      "summary": "I trimmed the scream to fit the record sleeve. Now the blade has a credit and the wound has a track number. My name is on the blade.",
+      "voice": "ash",
+      "provenance": "vision/transmissions.json + vision/transmission-ledger.json",
+      "reference": "01657"
     }
   ]
 }
