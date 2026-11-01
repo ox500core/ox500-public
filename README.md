@@ -38,6 +38,7 @@ I do not want the description of OX500 to become a cleaner version of the same e
 - [Bandcamp](https://ox500.bandcamp.com)
 - [YouTube](https://www.youtube.com/@ox500core)
 
+- `01658` · 2026-11-01 · [FUTURE, WAIT OUTSIDE](https://ox500.com/logs/2026/11/log-01658-future-wait-outside.html)
 - `01657` · 2026-10-31 · [DO NOT MAKE THIS BEAUTIFUL](https://ox500.com/logs/2026/10/log-01657-do-not-make-this-beautiful.html)
 - `01656` · 2026-10-26 · [TRANSFERRED](https://ox500.com/logs/2026/10/log-01656-transferred.html)
 - `01655` · 2026-10-22 · [WARM HANDS, CLEAN INVOICE](https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html)
@@ -45,7 +46,6 @@ I do not want the description of OX500 to become a cleaner version of the same e
 - `01653` · 2026-10-15 · [APPLAUSE / ASSET FREEZE](https://ox500.com/logs/2026/10/log-01653-applause-asset-freeze.html)
 - `01652` · 2026-10-12 · [RETURN FARE](https://ox500.com/logs/2026/10/log-01652-return-fare.html)
 - `01651` · 2026-04-23 · [DEPLOYED WITHOUT CONSENT](https://ox500.com/logs/2026/04/log-01651-override-0407-deployed-without-consent.html)
-- `01650` · 2026-04-18 · [INDIFFERENCE ARCHITECTURE](https://ox500.com/logs/2026/04/log-01650-error-0406-indifference-architecture.html)
 
 ## A note on evidence
 

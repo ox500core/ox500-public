@@ -16,6 +16,16 @@
   },
   "events": [
     {
+      "type": "published_work",
+      "date": "2026-11-01",
+      "precision": "day",
+      "title": "CANONICAL WORK ON RECORD",
+      "log_id": "01658",
+      "summary": "FUTURE, WAIT OUTSIDE",
+      "provenance": "published logs.json; publication date, not agent execution time",
+      "reference": "01658"
+    },
+    {
       "type": "visual_decision",
       "date": "2026-10-31",
       "precision": "day",
@@ -84,16 +94,6 @@
       "summary": "APPLAUSE / ASSET FREEZE",
       "provenance": "published logs.json; publication date, not agent execution time",
       "reference": "01653"
-    },
-    {
-      "type": "published_work",
-      "date": "2026-10-12",
-      "precision": "day",
-      "title": "CANONICAL WORK ON RECORD",
-      "log_id": "01652",
-      "summary": "RETURN FARE",
-      "provenance": "published logs.json; publication date, not agent execution time",
-      "reference": "01652"
     },
     {
       "type": "transmission_decision",
