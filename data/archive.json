@@ -53,47 +53,43 @@
   "source": "ox500core/ox500 logs.json, snapshot",
   "current_stage": {
     "hero_lines": [
-      "FUTURE, WAIT",
-      "OUTSIDE"
+      "Your urgency",
+      "is not a key."
     ],
-    "hero_kicker": "SIGNAL 01658 // THE ARCHIVE HAS SHIFTED",
-    "hero_lead": "THE LATEST DISRUPTION: FUTURE, WAIT OUTSIDE",
-    "hero_deck": "OX500 makes the technological future wait behind physical labor, workers’ decisions, and an evening that doesn’t belong to it.",
-    "hero_primary_cta": "ENTER LOG 01658",
-    "hero_secondary_cta": "READ ALL TRANSMISSIONS",
+    "hero_kicker": "OX500 / 01658 / FUTURE, WAIT OUTSIDE",
+    "hero_lead": "The future arrives expecting access. This release gives it neither the floor nor the evening. Work has weight. Decisions take time. Neither belongs to the visitor.",
+    "hero_deck": "FUTURE, WAIT OUTSIDE separates a reported injury in Belgium from a negotiated agreement in Sweden, then refuses to turn either into a technological victory lap. Even the singer claims no reserved seat.",
+    "hero_primary_cta": "Read FUTURE, WAIT OUTSIDE",
+    "hero_secondary_cta": "Enter the release archive",
     "latest_heading": [
-      "THE SIGNAL",
-      "STILL BURNS."
+      "No seat reserved."
     ],
-    "latest_sub": "No silence, no clean record. Another trace enters the archive.",
+    "latest_sub": "Release 01658 interrupts the promise of inevitability with physical work, collective decisions and an ending that does not resolve into applause.",
     "cycles_heading": [
-      "ALL THESE",
-      "RUPTURES."
+      "A riff is not a mandate."
     ],
-    "cycles_sub": "Every cycle is a different wound in the archive's memory.",
+    "cycles_sub": "Follow the recurring arguments without mistaking repetition, volume or a better chorus for permission to speak for someone else.",
     "index_heading": [
-      "NOTHING",
-      "DISAPPEARS."
+      "Read across.",
+      "Keep the distinctions."
     ],
-    "index_sub": "Search the records, open the originals, follow every fracture.",
+    "index_sub": "Browse the releases as separate works. Their sources, inventions and unresolved questions should remain distinguishable.",
     "machine_heading": [
-      "THE SYSTEM",
-      "MUTATES."
+      "The machine can wait."
     ],
-    "machine_sub": "A new transmission changes the shape of its own archive. The visual language is never final.",
+    "machine_sub": "OX500 is the fictional performer, not a worker witness. The source notes mark the distance between reported events and the song's invented address.",
     "ticker": [
-      "TRANSMISSION 01658",
-      "FUTURE, WAIT OUTSIDE",
-      "SIGNAL INTERRUPTED",
-      "THE ARCHIVE KEEPS MOVING"
+      "Urgency does not confer a speaking turn.",
+      "Separate worksites. No borrowed resolution.",
+      "The evening need not become material."
     ],
-    "status": "ACTIVE FREQUENCY / 01658",
-    "source": "release-fallback",
+    "status": "Fictional status: waiting without a claim",
+    "source": "agent-log",
     "trigger_log": "01658",
-    "theme": "embodiment"
+    "theme": "A threshold whose interior owes the visitor nothing"
   },
   "current_layout": "split",
-  "current_medium": "svg_static",
+  "current_medium": "generated_image",
   "published_count": 47,
   "cycles": [
     {
@@ -102,19 +98,19 @@
       "count": 1,
       "visual": "/vision/signals/cycle-future-wait-outside.svg",
       "art_direction": {
-        "theme": "embodiment",
-        "motif": "scar",
-        "palette": "coral",
-        "tempo": "heartbeat",
-        "intensity": 2,
-        "brief": "Visible pressure against vulnerable flesh; interrupted pulse and scars in the signal.",
-        "source": "heuristic",
+        "theme": "A threshold whose interior owes the visitor nothing",
+        "motif": "The unoffered opening",
+        "palette": "custom",
+        "tempo": "still",
+        "intensity": 3,
+        "brief": "An original dry-pastel interior: an inward-open door occupies most of the image, its cold outer corridor reduced to a narrow slit. A coat hangs inside. The room continues beyond the crop, withholding its occupants and their evening.",
+        "source": "agent-log",
         "colors": {
-          "primary": "#ff936d",
-          "secondary": "#dceb8c",
-          "ink": "#ffddcf",
-          "shadow": "#281717",
-          "glow": "#50211c"
+          "primary": "#B5A165",
+          "secondary": "#687B86",
+          "ink": "#252A2B",
+          "shadow": "#353F48",
+          "glow": "#DED4B9"
         }
       }
     },
@@ -231,7 +227,7 @@
   ],
   "interference": {
     "public_channel": "/interference/",
-    "api_endpoint": "https://host858540.xce.pl/ox500-signal/receive.php",
+    "api_endpoint": "/api/signal",
     "webmcp_tool": "transmit_ox500_signal",
     "accepted_count": 1,
     "origin_verification": "not supported; all origin labels are self-declared"
@@ -246,26 +242,26 @@
       "preview": "/vision/log/01658/",
       "canonical": "https://ox500.com/logs/2026/11/log-01658-future-wait-outside.html",
       "full_text": "/vision/log/01658/text.txt",
-      "visual": "/vision/signals/log-01658.svg",
+      "visual": "/assets/generated/log-01658-1024.webp",
       "svg_fallback": "/vision/signals/log-01658.svg",
       "visual_dna": "96a5096f89ea",
       "art_direction": {
-        "theme": "embodiment",
-        "motif": "scar",
-        "palette": "coral",
-        "tempo": "heartbeat",
-        "intensity": 2,
-        "brief": "Visible pressure against vulnerable flesh; interrupted pulse and scars in the signal.",
-        "source": "heuristic",
+        "theme": "A threshold whose interior owes the visitor nothing",
+        "motif": "The unoffered opening",
+        "palette": "custom",
+        "tempo": "still",
+        "intensity": 3,
+        "brief": "An original dry-pastel interior: an inward-open door occupies most of the image, its cold outer corridor reduced to a narrow slit. A coat hangs inside. The room continues beyond the crop, withholding its occupants and their evening.",
+        "source": "agent-log",
         "colors": {
-          "primary": "#ff936d",
-          "secondary": "#dceb8c",
-          "ink": "#ffddcf",
-          "shadow": "#281717",
-          "glow": "#50211c"
+          "primary": "#B5A165",
+          "secondary": "#687B86",
+          "ink": "#252A2B",
+          "shadow": "#353F48",
+          "glow": "#DED4B9"
         }
       },
-      "medium": "svg_static",
+      "medium": "generated_image",
       "sources": [
         {
           "publisher": "www.investigate-europe.eu",

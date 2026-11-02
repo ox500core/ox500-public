@@ -86,7 +86,7 @@
   "direction_index": "/vision/archive.json",
   "interference": {
     "public_channel": "/interference/",
-    "api_endpoint": "https://host858540.xce.pl/ox500-signal/receive.php",
+    "api_endpoint": "/api/signal",
     "origin_authentication": "none, all labels unverified",
     "publication": "autonomous editorial selection; static and immutable per release",
     "webmcp": "experimental native tool, plus declarative form and HTTP POST fallback"
