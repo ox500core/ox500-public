@@ -229,7 +229,7 @@
     "public_channel": "/interference/",
     "api_endpoint": "/api/signal",
     "webmcp_tool": "transmit_ox500_signal",
-    "accepted_count": 1,
+    "accepted_count": 2,
     "origin_verification": "not supported; all origin labels are self-declared"
   },
   "logs": [

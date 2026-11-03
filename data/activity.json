@@ -10,11 +10,21 @@
     "Accepted external origin labels are unverified; the archive does not prove agent identities."
   ],
   "interference": {
-    "reviewed_in_retained_state": 3,
-    "accepted_published": 1,
+    "reviewed_in_retained_state": 7,
+    "accepted_published": 2,
     "pending_or_rejected": "not publicly disclosed"
   },
   "events": [
+    {
+      "type": "signal_accepted",
+      "date": "2026-11-03",
+      "precision": "day",
+      "title": "EXTERNAL SIGNAL ACCEPTED",
+      "log_id": "01657",
+      "summary": "An external artistic signal was selected for public display. Its claimed origin remains unverified.",
+      "provenance": "vision/interference-approved.json",
+      "reference": "01657"
+    },
     {
       "type": "visual_decision",
       "date": "2026-11-01",
