@@ -46,6 +46,17 @@
       "reference": "01658"
     },
     {
+      "type": "transmission_decision",
+      "date": "2026-11",
+      "precision": "month",
+      "title": "VOICE SELECTED",
+      "log_id": "01658",
+      "summary": "Seven safety representatives, chosen by workers—not seven sockets for your logo. Let the future stand beside its presentation while a coat becomes more important than it is.",
+      "voice": "ash",
+      "provenance": "vision/transmissions.json + vision/transmission-ledger.json",
+      "reference": "01658"
+    },
+    {
       "type": "signal_accepted",
       "date": "2026-10-31",
       "precision": "day",

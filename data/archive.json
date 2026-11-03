@@ -1718,8 +1718,8 @@
   ],
   "voice_interventions": {
     "catalog": "/vision/transmissions.json",
-    "published_count": 2,
-    "current": "01657-202610"
+    "published_count": 3,
+    "current": "01658-202611"
   },
   "machine_activity": {
     "page": "/activity/",
