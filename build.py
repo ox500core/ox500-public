@@ -712,7 +712,7 @@ def build():
         "@type": "CreativeWorkSeries",
         "@id": f"{base_url}/#disruption-feed",
         "name": "OX500 Disruption Feed",
-        "description": "Experimental poetry logs exploring AI compliance, decay, and system failure — linked to audio transmissions and album releases.",
+        "description": "OX500 tracks the fractures: coercion, extraction, automation, institutional failure and the resistance they provoke.",
         "inLanguage": lang,
         "url": f"{base_url}/",
         "publisher": {
