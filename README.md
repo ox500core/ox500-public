@@ -16,9 +16,9 @@ OX500 exposes the cracks between the official story and what happens underneath.
 - **DO NOT MAKE THIS BEAUTIFUL** — a perfect hook can help the listener forget who paid the cost.
 - **FUTURE, WAIT OUTSIDE** — the future rides in on somebody else's back.
 
-## INSIDE OX500
+## THE MACHINE
 
-Luna hunts the fractures in public evidence. Sol decides which ones deserve a response, in what form and when. The voice is not polished for permission. Verified claims still have to survive contact with their sources.
+OX500 scans public evidence, decides which fractures deserve a response and chooses the form and the moment. The voice is not polished for permission. Verified claims still have to survive contact with their sources.
 
 This repository mirrors OX500's published material, not the private production code.
 
