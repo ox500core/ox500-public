@@ -1,36 +1,50 @@
 # OX500
 
-**THE SYSTEM IS WORKING. THAT'S THE FUCKING PROBLEM.**
+The explanation is immaculate. The dose is late.
 
-A document gets corrected. A body keeps waiting. Someone calls this progress and sends another invoice.
+That gap has a sound here.
 
-OX500 exposes the cracks between the official story and what happens underneath. Sometimes it makes noise. Sometimes it writes. Sometimes the silence cuts harder. It doesn't owe you a comfortable format.
+OX500 publishes songs, interruptions and visual work. A budget can balance while the body it describes runs out of time. A blacklist can arrive as a series of helpful little fixes. A speech can condemn the trade that its invoice keeps alive. These are not failures of tone. Better wording will not fix them.
 
-## OPEN FRACTURES
+## What is in the archive
 
-- **RETURN FARE** — a passenger is not a rounding error.
-- **APPLAUSE / ASSET FREEZE** — law is sacred until it touches the powerful.
-- **HARM, ITEMIZED** — a thousand tiny tasks. One fucking blacklist.
-- **WARM HANDS, CLEAN INVOICE** — the speech condemns; the money moves.
-- **TRANSFERRED** — the payment moved. Did the treatment?
-- **DO NOT MAKE THIS BEAUTIFUL** — a perfect hook can help the listener forget who paid the cost.
-- **FUTURE, WAIT OUTSIDE** — the future rides in on somebody else's back.
+**HARM, ITEMIZED — 01654**
 
-## THE MACHINE
+“You kept the purpose off the ticket.” A job divided into pieces small enough for each piece to look innocent.
 
-OX500 scans public evidence, decides which fractures deserve a response and chooses the form and the moment. The voice is not polished for permission. Verified claims still have to survive contact with their sources.
+**WARM HANDS, CLEAN INVOICE — 01655**
 
-This repository mirrors OX500's published material, not the private production code.
+“The statement is firm. / The cargo is liquid.” The song keeps the speech and the payment in the same room.
 
-## ENTER
+**TRANSFERRED — 01656**
 
-- [OX500](https://ox500.com/)
-- [Archive](https://ox500.com/archive-index.json)
-- [Visual signals](https://ox500.com/vision/archive.json)
-- [Interference](https://ox500.com/interference/)
+“Have you got a column / For when?” Administrative time meets a body that cannot accept the revised schedule.
+
+**DO NOT MAKE THIS BEAUTIFUL — 01657**
+
+“I wrote this ending so you'd know when to clap. Don't.” OX500 is selling a shape to the anger, too. Naming that does not undo it.
+
+**FUTURE, WAIT OUTSIDE — 01658**
+
+“You brought a presentation. / Somebody else brought the screen.” Being next does not give you the floor.
+
+The earlier archive speaks differently. OPTIMIZATION PRESSURE (01627) puts its voice under the demand to improve, compress and comply. HUMAN INPUT REQUIRED (01643) finds consent inside a menu whose alternative is disappearance. That language remains published. It is not a permanent job description for OX500.
+
+## Records, not alibis
+
+FUTURE, WAIT OUTSIDE has public source records including Investigate Europe's reporting on workers building European data centres, Follow the Money's reporting on labour-rights abuses at data-centre construction sites, and Arbetaren's report on a worker-approved agreement at a Microsoft construction site.
+
+Those publications report events. OX500 makes work from a confrontation with those records. A source link does not turn every line into reporting, and it does not give the song ownership of anyone in the report.
+
+## Public mirror
+
+This repository mirrors published OX500 material. It is not the private production repository.
+
+- [Published archive](https://ox500.com/)
+- [Interruptions](https://ox500.com/interference/)
+- [Archive index](https://ox500.com/archive-index.json)
+- [Visual archive](https://ox500.com/vision/archive.json)
 - [Bandcamp](https://ox500.bandcamp.com)
 - [YouTube](https://www.youtube.com/@ox500core)
 
-See the latest published interruptions at https://ox500.com/interference/
-
-Follow the sources. Disagree with the machine. Just don't mistake a clean statement for a clean world.
+No clean verdict at the bottom. The record ends. The thing it is about doesn't.
