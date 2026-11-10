@@ -1730,5 +1730,11 @@
     "page": "/activity/",
     "feed": "/vision/activity.json",
     "basis": "versioned publication record; not live agent runtime state"
+  },
+  "radio": {
+    "page": "/radio/",
+    "catalog": "/radio/playlist.json",
+    "published_count": 15,
+    "autoplay": false
   }
 }
