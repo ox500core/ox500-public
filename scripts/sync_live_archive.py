@@ -34,6 +34,86 @@ def read_public_json(url):
     return json.loads(raw.decode("utf-8"))
 
 
+
+MAX_TEXT_BYTES = 128_000
+
+
+class NoRedirects(urllib.request.HTTPRedirectHandler):
+    """A public text endpoint must not follow redirects off the canonical origin."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def read_public_text(log):
+    """Fetch the released, display-safe plaintext — never the private music master."""
+    ident = log["id"]
+    expected_path = f"/vision/log/{ident}/text.txt"
+    if log.get("full_text") != expected_path:
+        raise ValueError(f"Unsafe or missing public text route: {ident}")
+    url = BASE + expected_path
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "OX500-Public-Mirror/1.0", "Accept": "text/plain"}
+    )
+    with urllib.request.build_opener(NoRedirects()).open(req, timeout=25) as response:
+        if response.geturl() != url or response.status != 200:
+            raise ValueError(f"Noncanonical public text response: {ident}")
+        if response.headers.get_content_type() != "text/plain":
+            raise ValueError(f"Unexpected public text type: {ident}")
+        raw = response.read(MAX_TEXT_BYTES + 1)
+    if not raw or len(raw) > MAX_TEXT_BYTES:
+        raise ValueError(f"Missing or oversized published text: {ident}")
+    body = raw.decode("utf-8").replace("\r\n", "\n").strip()
+    if len(body) < 12 or re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", body):
+        raise ValueError(f"Invalid published text: {ident}")
+    return body
+
+
+def published_export(archive, fetch_text=read_public_text):
+    """Complete, fail-closed public JSON archive. Never read private logs.json."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    records = archive["logs"]
+    if archive.get("published_count") != len(records):
+        raise ValueError("Incomplete public source archive")
+    # Fetch all released texts before writing anything. Map preserves source ordering.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        texts = list(pool.map(fetch_text, records))
+    export = []
+    for log, body in zip(records, texts):
+        if not isinstance(body, str) or len(body.strip()) < 12:
+            raise ValueError("Missing text for published log " + log["id"])
+        sources = []
+        for source in log.get("sources", []):
+            if not isinstance(source, dict):
+                raise ValueError("Invalid public source record")
+            public_source = {
+                key: source[key] for key in ("publisher", "title", "url", "published")
+                if isinstance(source.get(key), str)
+            }
+            if "url" in public_source and not public_source["url"].startswith("https://"):
+                raise ValueError("Unexpected source URL for " + log["id"])
+            sources.append(public_source)
+        export.append({
+            "id": log["id"],
+            "date": log["date"],
+            "title": log["title"],
+            "series": log.get("series", ""),
+            "excerpt": log.get("excerpt", ""),
+            "canonical": log["canonical"],
+            "text": body.strip(),
+            "sources": sources,
+        })
+    if len(export) != len(records) or [x["id"] for x in export] != [x["id"] for x in records]:
+        raise ValueError("Public text export is incomplete")
+    return {
+        "schema_version": 1,
+        "name": "OX500 / PUBLISHED TEXTS",
+        "site": {"base_url": BASE, "source_archive": ARCHIVE},
+        "published_count": len(export),
+        "logs": export,
+    }
+
 def safe_text(value, limit=220):
     """User-facing Markdown only; avoid accidental HTML or link injection."""
     val = re.sub(r"[\x00-\x1f\x7f]+", " ", str(value or ""))
@@ -64,6 +144,8 @@ def validate(archive, manifest):
         if not isinstance(ident, str) or not re.fullmatch(r"[0-9]{5}", ident) or ident in seen:
             raise ValueError("Duplicate or invalid published log ID")
         seen.add(ident)
+        if log.get("full_text") != f"/vision/log/{ident}/text.txt":
+            raise ValueError("Missing or unsafe public text pointer")
         when = dt.date.fromisoformat(log["date"])
         if when > today:
             raise ValueError("Unpublished future log encountered")
@@ -117,10 +199,12 @@ def main():
     manifest = read_public_json(MANIFEST)
     activity = read_public_json(ACTIVITY)
     validate(archive, manifest)
+    public_texts = published_export(archive)
     if activity.get("schema_version") != 1 or activity.get("name") != "OX500 / MACHINE ACTIVITY" or not isinstance(activity.get("events"), list) or len(activity["events"]) > 24:
         raise ValueError("Invalid machine activity snapshot")
     output = {
         ROOT / "README.md": readme(archive, manifest),
+        ROOT / "logs.json": json.dumps(public_texts, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "archive.json": json.dumps(archive, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "agent-manifest.json": json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         ROOT / "data" / "activity.json": json.dumps(activity, indent=2, ensure_ascii=False) + "\n",

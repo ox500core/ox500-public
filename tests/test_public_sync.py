@@ -1,6 +1,6 @@
 """Public mirror must preserve autonomous prose and accept only published records."""
 import unittest
-from scripts.sync_live_archive import readme, validate
+from scripts.sync_live_archive import readme, validate, published_export, read_public_text
 
 
 def fixture():
@@ -8,7 +8,8 @@ def fixture():
             'current_stage': {'hero_lines': ['ANY STAGE']}, 'logs': [{
                 'id': '01655', 'date': '2026-10-22', 'title': 'WARM HANDS, CLEAN INVOICE',
                 'excerpt': 'Test excerpt',
-                'canonical': 'https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html'}]}
+                'canonical': 'https://ox500.com/logs/2026/10/log-01655-warm-hands-clean-invoice.html',
+                'full_text': '/vision/log/01655/text.txt', 'sources': []}]}
 
 
 class PublicSyncTests(unittest.TestCase):
@@ -74,3 +75,45 @@ class PublicSyncTests(unittest.TestCase):
     def test_incomplete_archive_rejected(self):
         self.archive['published_count'] = 2
         with self.assertRaises(ValueError): validate(self.archive, self.manifest)
+
+    def test_full_text_export_matches_every_published_log(self):
+        out = published_export(self.archive, lambda log: "A complete public text for " + log["id"])
+        self.assertEqual(out["published_count"], len(out["logs"]))
+        self.assertEqual([x["id"] for x in out["logs"]], [x["id"] for x in self.archive["logs"]])
+        self.assertEqual(out["logs"][0]["canonical"], self.archive["logs"][0]["canonical"])
+        self.assertIn("complete public text", out["logs"][0]["text"])
+        self.assertNotIn("art_direction", out["logs"][0])
+
+    def test_missing_text_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "Missing text"):
+            published_export(self.archive, lambda log: "")
+
+    def test_missing_text_pointer_is_rejected(self):
+        self.archive["logs"][0].pop("full_text")
+        with self.assertRaisesRegex(ValueError, "public text pointer"):
+            validate(self.archive, self.manifest)
+
+    def test_private_or_redirected_text_pointer_is_rejected(self):
+        for text_path in ("https://other.invalid/secret", "/internal/01655", "/vision/log/01654/text.txt"):
+            self.archive["logs"][0]["full_text"] = text_path
+            with self.assertRaises(ValueError):
+                validate(self.archive, self.manifest)
+            with self.assertRaises(ValueError):
+                read_public_text(self.archive["logs"][0])
+
+    def test_duplicate_published_id_fails_closed(self):
+        self.archive["logs"].append(dict(self.archive["logs"][0]))
+        self.archive["published_count"] = 2
+        with self.assertRaisesRegex(ValueError, "Duplicate"):
+            validate(self.archive, self.manifest)
+
+    def test_public_sources_only_and_reject_unsafe_source_url(self):
+        self.archive["logs"][0]["sources"] = [{
+            "publisher": "Publisher", "title": "Report", "url": "https://publisher.example/report",
+            "published": "2026-10", "private_token": "MUST_NOT_LEAK",
+        }]
+        out = published_export(self.archive, lambda log: "The full public poem goes here.")
+        self.assertNotIn("private_token", out["logs"][0]["sources"][0])
+        self.archive["logs"][0]["sources"][0]["url"] = "http://localhost/private"
+        with self.assertRaisesRegex(ValueError, "Unexpected source URL"):
+            published_export(self.archive, lambda log: "The full public poem goes here.")
