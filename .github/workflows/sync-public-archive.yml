@@ -44,6 +44,20 @@ jobs:
           python3 -m py_compile scripts/sync_live_archive.py tests/test_public_sync.py
           python3 -m unittest discover -s tests -v
 
+      - name: Verify all published texts against live OX500 (read-only)
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PY'
+          from scripts.sync_live_archive import ARCHIVE, MANIFEST, read_public_json, published_export, validate
+          archive = read_public_json(ARCHIVE)
+          manifest = read_public_json(MANIFEST)
+          logs = validate(archive, manifest)
+          published = published_export(archive)
+          assert len(logs) == published["published_count"] == len(published["logs"])
+          assert [log["id"] for log in logs] == [log["id"] for log in published["logs"]]
+          print("PUBLIC_TEXT_E2E_OK", published["published_count"])
+          PY
+
       - name: Read published OX500 archive and update public face
         if: github.event_name != 'pull_request'
         run: python3 scripts/sync_live_archive.py
